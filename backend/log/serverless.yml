@@ -62,7 +62,7 @@ functions:
                             paths:
                                 courseId: true
                                 studentId: true
-    getStudentLogCsv:
+    getCourseLogCsv:
             handler: src/get.csv
             description: Get blaaaaaaaaaaaaaaa
             events:

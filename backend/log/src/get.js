@@ -4,6 +4,7 @@ const {
 	cors, httpErrorHandler, httpEventNormalizer,
 } = require('middy/middlewares');
 const createError = require('http-errors');
+const auth0 = require('auth0');
 const dbConfig = require('../db');
 const corsConfig = require('../cors');
 
@@ -91,9 +92,12 @@ async function dbRowToProperObject(obj) {
 
 async function dbRowToCSVObject(obj) {
 	const retObj = { ...obj };		// shallow copy
-	retObj.time = obj.dtime;
+	const date = new Date(obj.dtime);
+	retObj.date = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
+	retObj.time = `${date.getHours()}:${date.getMinutes()}`;
 	delete retObj.dtime;
 	delete retObj.live;
+	delete retObj.logId;
 	let promise = null;
 	switch (obj.msgType) {
 	case 0:
@@ -210,7 +214,7 @@ const getStudentLog = async (event, context, callback) => {
 };
 
 // GET log/ofCourse/{courseId}/csv
-const getStudentLogCsv = async (event, context, callback) => {
+const getCourseLogCsv = async (event, context, callback) => {
 	if (!event.pathParameters.courseId) {
 		return callback(createError.BadRequest("Course's ID required."));
 	}
@@ -220,6 +224,13 @@ const getStudentLogCsv = async (event, context, callback) => {
 
 	// Connect
 	const knexConnection = knex(dbConfig);
+
+	const management = new auth0.ManagementClient({
+		domain: 'e-mon.eu.auth0.com',
+		clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
+		clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
+		scope: 'read:users',
+	});
 
 	return knexConnection('Logs')
 		.where({
@@ -231,17 +242,54 @@ const getStudentLogCsv = async (event, context, callback) => {
 
 			let resArray = await Promise.all(result.map(dbRowToCSVObject));
 
-			const csvHeader = Object.keys(resArray[0]).sort().join(',');
+			for (let i = 0; i < resArray.length; i += 1) {
+				resArray[i].lessonNumber += 1;
+			}
+
+			let queryString = '';
+
+			result.forEach((x) => {
+				if (queryString !== '') { queryString += ' OR '; }
+
+				queryString += `user_id:${x.studentId}`;
+			});
+
+			const userDetails = await management.getUsers({
+				search_engine: 'v3',
+				fields: 'user_id,email,user_metadata',
+				include_fields: true,
+				q: queryString,
+			});
+
+			const predUserIdStudentId = studentId => (x => x.user_id === studentId);
+
+			for (let i = 0; i < resArray.length; i += 1) {
+				const userInfo = userDetails.find(predUserIdStudentId(resArray[i].studentId));
+				delete resArray[i].studentId;
+				resArray[i].studentFirstName = userInfo.user_metadata.first_name;
+				resArray[i].studentLastName = userInfo.user_metadata.last_name;
+				resArray[i].studentEmail = userInfo.email;
+			}
+
+			const csvHeader = Object.keys(resArray[0]).sort().join(',')
+				// insert a space before all caps
+				.replace(/([A-Z])/g, ' $1')
+				// uppercase the first character
+				.replace(/^./, str => str.toUpperCase())
+				// uppercase the first character after commas
+				.replace(/,./g, str => str.toUpperCase());
 
 			resArray = resArray.map(x => Object.entries(x)
 				// eslint-disable-next-line no-nested-ternary
 				.sort((a, b) => ((a[0] < b[0]) ? -1 : (a[0] > b[0]) ? 1 : 0))
 				.map(y => y[1]).join(',')).join('\r\n');
 
+			const now = new Date(Date.now());
+
 			callback(null, {
 				statusCode: 200,
 				headers: {
-					'Content-Disposition': ' attachment; filename="log.csv"',
+					'Content-Disposition': `attachment; filename="log-${now.getDay()}-${now.getMonth()}-${now.getFullYear()}-${now.getHours()}${now.getMinutes()}.csv"`,
 					'Content-Type': 'text/csv; charset=UTF-8',
 				},
 				body: `${csvHeader}\n${resArray}`,
@@ -266,6 +314,13 @@ const getAllLogCsv = async (event, context, callback) => {
 	// Connect
 	const knexConnection = knex(dbConfig);
 
+	const management = new auth0.ManagementClient({
+		domain: 'e-mon.eu.auth0.com',
+		clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
+		clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
+		scope: 'read:users',
+	});
+
 	return knexConnection('Logs')
 		.whereIn('courseId', knexConnection('Courses').select('courseId').where({ teacherId }))
 		.select()
@@ -274,17 +329,54 @@ const getAllLogCsv = async (event, context, callback) => {
 
 			let resArray = await Promise.all(result.map(dbRowToCSVObject));
 
-			const csvHeader = Object.keys(resArray[0]).sort().join(',');
+			for (let i = 0; i < resArray.length; i += 1) {
+				resArray[i].lessonNumber += 1;
+			}
+
+			let queryString = '';
+
+			result.forEach((x) => {
+				if (queryString !== '') { queryString += ' OR '; }
+
+				queryString += `user_id:${x.studentId}`;
+			});
+
+			const userDetails = await management.getUsers({
+				search_engine: 'v3',
+				fields: 'user_id,email,user_metadata',
+				include_fields: true,
+				q: queryString,
+			});
+
+			const predUserIdStudentId = studentId => (x => x.user_id === studentId);
+
+			for (let i = 0; i < resArray.length; i += 1) {
+				const userInfo = userDetails.find(predUserIdStudentId(resArray[i].studentId));
+				delete resArray[i].studentId;
+				resArray[i].studentFirstName = userInfo.user_metadata.first_name;
+				resArray[i].studentLastName = userInfo.user_metadata.last_name;
+				resArray[i].studentEmail = userInfo.email;
+			}
+
+			const csvHeader = Object.keys(resArray[0]).sort().join(',')
+				// insert a space before all caps
+				.replace(/([A-Z])/g, ' $1')
+				// uppercase the first character
+				.replace(/^./, str => str.toUpperCase())
+				// uppercase the first character after commas
+				.replace(/,./g, str => str.toUpperCase());
 
 			resArray = resArray.map(x => Object.entries(x)
 				// eslint-disable-next-line no-nested-ternary
 				.sort((a, b) => ((a[0] < b[0]) ? -1 : (a[0] > b[0]) ? 1 : 0))
 				.map(y => y[1]).join(',')).join('\r\n');
 
+			const now = new Date(Date.now());
+
 			callback(null, {
 				statusCode: 200,
 				headers: {
-					'Content-Disposition': ' attachment; filename="log.csv"',
+					'Content-Disposition': `attachment; filename="log-${now.getDay()}-${now.getMonth()}-${now.getFullYear()}-${now.getHours()}${now.getMinutes()}.csv"`,
 					'Content-Type': 'text/csv; charset=UTF-8',
 				},
 				body: `${csvHeader}\n${resArray}`,
@@ -304,7 +396,7 @@ const handler = middy(getStudentLog)
 	.use(httpErrorHandler())
 	.use(cors(corsConfig));
 
-const csv = middy(getStudentLogCsv)
+const csv = middy(getCourseLogCsv)
 	.use(httpEventNormalizer())
 	.use(httpErrorHandler())
 	.use(cors(corsConfig));

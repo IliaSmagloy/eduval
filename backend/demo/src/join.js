@@ -106,7 +106,7 @@ const registerDemoStudent = async (event, context, callback) => {
 		})
 		.then(() => management.getUsers({
 			search_engine: 'v3',
-			q: `email:*@${emailSuffix} AND name:${event.body.nickname}`,
+			q: `email.domain:${emailSuffix} AND name:"${event.body.nickname}"`,
 		}))
 		// Check name taken
 		.then((users) => {

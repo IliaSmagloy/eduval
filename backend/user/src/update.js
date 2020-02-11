@@ -73,6 +73,19 @@ const updateUser = async (event, context, callback) => {
 		return callback(createError.Unauthorized("You can't edit a different user!"));
 	}
 
+	if (event.body.newPassword) {
+		// Check if it conforms to Auth0 rules
+		const pass = event.body.newPassword;
+		if (pass.length < 8 || pass.toLowerCase() === pass || pass.toUpperCase() === pass || !pass.match(/[0-9]/)) {
+			return callback(null, {
+				statusCode: 400,	// bad request
+				body: JSON.stringify({
+					error: 'WEAK_PASSWORD',
+				}),
+			});
+		}
+	}
+
 	// convert to format stored in DB, and discard ID
 	const userinfo = objectToUserInfo(event.body);
 

@@ -93,8 +93,11 @@ async function dbRowToProperObject(obj) {
 async function dbRowToCSVObject(obj) {
 	const retObj = { ...obj };		// shallow copy
 	const date = new Date(obj.dtime);
-	retObj.date = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
-	retObj.time = `${date.getHours()}:${date.getMinutes()}`;
+	// eslint-disable-next-line prefer-destructuring
+	retObj.date = date.toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' }).split(' ')[0];
+	// retObj.date = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
+	// eslint-disable-next-line prefer-destructuring
+	retObj.time = date.toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' }).split(' ')[1];
 	delete retObj.dtime;
 	delete retObj.live;
 	delete retObj.logId;
@@ -343,7 +346,7 @@ const getAllLogCsv = async (event, context, callback) => {
 
 			const userDetails = await management.getUsers({
 				search_engine: 'v3',
-				fields: 'user_id,email,user_metadata',
+				fields: 'user_id,email,user_metadata,app_metadata',
 				include_fields: true,
 				q: queryString,
 			});
@@ -355,7 +358,7 @@ const getAllLogCsv = async (event, context, callback) => {
 				delete resArray[i].studentId;
 				resArray[i].studentFirstName = userInfo.user_metadata.first_name;
 				resArray[i].studentLastName = userInfo.user_metadata.last_name;
-				resArray[i].studentEmail = userInfo.email;
+				resArray[i].studentEmail = userInfo.app_metadata.demo_student ? 'Demo Student' : userInfo.email;
 			}
 
 			const csvHeader = Object.keys(resArray[0]).sort().join(',')

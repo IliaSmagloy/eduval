@@ -127,7 +127,8 @@ class UserAccountDetails extends React.Component {
         newPassword: "",
         oldPassword: "",
         email: student_payload["email"],
-        phoneNum: student_payload["https://emon-teach.com/phone_number"],
+ //       phoneNum: student_payload["https://emon-teach.com/phone_number"],
+        phoneNum: "",
         demoStudent: student_payload["https://emon-teach.com/demo_student"]
     }
       self.setState({details: new_dets});

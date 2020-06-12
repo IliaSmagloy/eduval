@@ -42,7 +42,7 @@ const EmojiEnum = {
         console.log("TableEntryProps", props);
         const messageType = props.messageType;
         if(messageType === "EMON") {
-          return <div>{props.value} <img alt="Emons" style={{width:"1.5em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /></div>;
+          return <div>{props.value} <img alt="EMons" style={{width:"1.5em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /></div>;
         }else {
           return <div style={{fontSize:'1.3em'}}>
             {EmojiEnum[props.emojiType]}
@@ -121,8 +121,8 @@ class CourseDetails extends React.Component {
                     <ListGroupItem className="p-3">
                       <Row>
                         <Col>
-                          <Trans i18nKey="emonBalance" count={{balance}}>
-                            You have a Balance of <strong>{{balance}}</strong><img alt="Emons" style={{width:"1.5em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /> in this course.<br /><br />
+                          <Trans i18nKey="EMonBalance" count={{balance}}>
+                            You have a Balance of <strong>{{balance}}</strong><img alt="EMons" style={{width:"1.5em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /> in this course.<br /><br />
                             Keep up the good work!
                           </Trans>
                         </Col>
@@ -211,7 +211,7 @@ class CourseDetails extends React.Component {
                               {t("Day")}
                             </th>
                             <th style={{textAlign:"center"}} scope="col" className="border-0">
-                              {t("Emons")}
+                              {t("EMons")}
                             </th>
                             <th style={{textAlign:"center"}} scope="col" className="border-0">
                               {t("Emoji")}

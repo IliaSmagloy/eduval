@@ -1,8 +1,8 @@
 function (user, context, callback) {
     const teacherRole = 'teacher';
     const studentRole = 'student';
-    const teacherClient = 'Emon Teachers';
-    const studentClient = 'Emon Students';
+    const teacherClient = 'EMon Teachers';
+    const studentClient = 'EMon Students';
     const displayName = {};
     displayName[teacherClient] = "the teacher application";
     displayName[studentClient] = "the student application";

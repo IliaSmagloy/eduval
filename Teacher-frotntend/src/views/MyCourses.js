@@ -135,7 +135,7 @@ class MyCourses extends React.Component {
               name={course.name}
               description={course.description}
               disabled_play={this.state.disabled ||
-                (this.state.activeLesson!=-1 && this.state.activeLesson !== course.id)}
+                (this.state.activeLesson!==-1 && this.state.activeLesson !== course.id)}
               play_pushed={this.state.activeLesson === course.id}
               id={course.id}
               playClicked=

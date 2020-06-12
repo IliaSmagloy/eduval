@@ -144,7 +144,7 @@ class StudentButton extends React.Component
         }}
         >
           <Badge color="secondary"
-          badgeContent={"Emons:" + this.state.student.emons}
+          badgeContent={"EMons:" + this.state.student.emons}
           overlap="rectangle"
           anchorOrigin={{
             horizontal:"right",

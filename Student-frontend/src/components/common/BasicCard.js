@@ -18,7 +18,7 @@ class BasicCard extends React.Component {
        authorAvatar: require("../../images/avatars/1.jpg"),
        title: "Welcome to EMon - Student Dashboard panel.",
        body:
-         "Here at EMon, you can manage your courses, learn, earn E-Money and much more. You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Learning!"
+         "Here at EMon, you can manage your courses, learn, earn EMons and much more. You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Learning!"
      };
 
      let version_content = {

@@ -37,7 +37,7 @@ const initialState = {
           '12/09/2019', '', '', '','',],
   datasets: [
     {
-      label: 'Emon Per Lesson',
+      label: 'EMon Per Lesson',
       fill: true,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -110,7 +110,7 @@ class StudentLessonGraph extends React.Component {
 
     console.log(this.state);
     var tmp = this.state.datasets;
-    tmp[0].label=this.props.t("Emons Per Lesson");
+    tmp[0].label=this.props.t("EMons Per Lesson");
     tmp[1].label=this.props.t("Emoji Per Lesson");
     var lbl = []
     var arr = []

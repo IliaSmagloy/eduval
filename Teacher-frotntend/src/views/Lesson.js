@@ -418,7 +418,7 @@ class Lesson extends React.Component {
           <Col lg="8" className="mb-4">
             <AttendStudentCard
             title={t("Attending Students")}
-            subtitle={t("Pick the students you want to send E-Money to")}
+            subtitle={t("Pick the students you want to send EMons to")}
             students={this.state.students}
             isChosen = {(id) =>
             {
@@ -525,7 +525,7 @@ class Lesson extends React.Component {
                 <hr style={{backgroundColor: "#a4a4a4", width: "95%"}} />
 
                 <div className="mb-2 pb-1" style={{margin:"10px"}}>
-                  <h6 style={{fontSize:"12px"}}>{t("Or choose amount of E-Money to send")}</h6>
+                  <h6 style={{fontSize:"12px"}}>{t("Or choose amount of EMons to send")}</h6>
                   </div>
                   <Row style={{margin:"2px"}}>
                   {this.state.coins.map((coin, idx) => (
@@ -580,7 +580,7 @@ class Lesson extends React.Component {
                         className="user-avatar rounded-circle"
                         style={{width: "3em", height: "3em", marginRight: "0"}}
                         src={coin.src}
-                        alt={coin.value + " E-Money"}
+                        alt={coin.value + " EMons"}
                       />
                       </Button>
 
@@ -614,14 +614,14 @@ class Lesson extends React.Component {
                       server.deleteLessonMessages(()=>{
                         history.push("/my-courses");
                       }, (err)=>{
-                        console.log("Error in deleteLessonMessages in onClick in End Class in Lessons.js", err);
+                        console.log("Error in deleteLessonMessages in onClick in End Lesson in Lessons.js", err);
                       }, self.props.match.params.id);
                     }, function(error){
-                      console.log("Error in changeLessonStatus in onClick in End Class in Lessons.js", error);
+                      console.log("Error in changeLessonStatus in onClick in End Lesson in Lessons.js", error);
                       self.setState({disabled: false, error: true});
                     }, this.props.match.params.id, "LESSON_END");
                   }}>
-                    {t("End Class")}
+                    {t("End Lesson")}
                   </Button>
                   </div>
 

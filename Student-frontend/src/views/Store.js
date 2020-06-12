@@ -111,7 +111,7 @@ class Store extends React.Component {
 
   postbuy(post){
     if(this.state.balance< post.cost){
-      this.setState({message: "you dont have enough Emons to buy this item ", error: true ,success :false});
+      this.setState({message: "you dont have enough EMons to buy this item ", error: true ,success :false});
       return;
     }
     if(post.amountAvailable === 0){
@@ -178,14 +178,14 @@ class Store extends React.Component {
           }
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title={this.state.course.name+"'s Store"} subtitle="You can buy stuff with your Emons"
+          <PageTitle sm="4" title={this.state.course.name+"'s Store"} subtitle="You can buy stuff with your EMons"
                      className="text-sm-left" />
 
 
         </Row>
         <Row >
               <Col >
-                <div style={{fontSize: 20}}><p>You have {this.state.balance} <img alt="Emons" style={{width:"1.5em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /> in this course</p></div>
+                <div style={{fontSize: 20}}><p>You have {this.state.balance} <img alt="EMons" style={{width:"1.5em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /> in this course</p></div>
               </Col>
         </Row>
 

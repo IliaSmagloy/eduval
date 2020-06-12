@@ -297,7 +297,7 @@ class Lesson extends React.Component {
             this.setState(prevState => ({
             reward_money : updated_reward_money
           }));
-          this.setState({message: "You got "+ res.value+" Emons from your teacher!", success: true});
+          this.setState({message: "You got "+ res.value+" EMons from your teacher!", success: true});
           this.handleMessageModalOpen();
             window.scrollTo(0, 0);
           }
@@ -413,7 +413,7 @@ class Lesson extends React.Component {
 
                 <div className="mt-2">
                 <p></p>
-                  <p style={{fontSize:"20px" ,textAlign:"center"}}>{t("Current E-Money Earned") + ":"} {this.state.reward_money} <img style={{width:"2em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /></p>
+                  <p style={{fontSize:"20px" ,textAlign:"center"}}>{t("Current EMons Earned") + ":"} {this.state.reward_money} <img style={{width:"2em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /></p>
                 </div>
               </CardHeader>
 

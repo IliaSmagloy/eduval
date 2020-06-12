@@ -142,7 +142,7 @@ class UserGraphsCard extends React.Component
           {this.state.piedata &&
             <div>
               <Typography variant="h5" gutterBottom>
-                {t("Emon Division between Courses for this Student")}
+                {t("EMon's division between Courses for this Student")}
               </Typography>
               <StudentPie
                 pieData={this.state.piedata}

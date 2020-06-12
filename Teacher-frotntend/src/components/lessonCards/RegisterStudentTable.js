@@ -28,7 +28,7 @@ const columns = [
   { id: 'check', label: '', minWidth: 33 },
   { id: 'name', label: 'Name', minWidth: 70 },
   { id: 'phoneNum', label: 'Phone Number', minWidth: 70 },
-  { id: 'emons', label: 'Emons', minWidth: 70 },
+  { id: 'emons', label: 'EMons', minWidth: 70 },
   { id: 'email', label: 'Email', minWidth: 70 },
   { id: 'id', label: 'Email', minWidth: 70 },
   { id: 'missing', label: 'Email', minWidth: 70 },

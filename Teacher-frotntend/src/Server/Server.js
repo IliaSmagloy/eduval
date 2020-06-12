@@ -69,7 +69,7 @@ class Server {
 
 
   /*
-  =================== Send E-Money ====================
+  =================== Send EMons ====================
   @params:
     - callback: function to do in case of success that has one paramater - the response
     - callbackError: function to do in case of error that has one paramater - the error

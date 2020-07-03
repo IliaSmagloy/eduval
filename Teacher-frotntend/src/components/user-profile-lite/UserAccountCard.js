@@ -247,7 +247,10 @@ class UserAccountCard extends React.Component
     var re = RegExp('^(0|(\\+[0-9]{3}))[0-9]{9}$','g');
     var arr_result = re.exec(value);
     console.log("Arr_Result", arr_result);
-    if(!arr_result && value!="")
+    if (value == "")  {
+      this.setState({isPhoneNumber: true})
+    }
+    else if(!arr_result)
     {
       this.setState({isPhoneNumber: false})
     }

@@ -23,6 +23,8 @@ import server from "../Server/Server";
 
 import PageTitle from "../components/common/PageTitle";
 
+import { withTranslation } from 'react-i18next';
+
 Modal.setAppElement('#root');
 
 const customStyles = {
@@ -47,8 +49,7 @@ class CourseStore extends React.Component {
       course: {
       },
 
-      used_items: [
-      ],
+      used_items: [],
 
       disabled: false,
 
@@ -270,6 +271,7 @@ class CourseStore extends React.Component {
 
 
   render() {
+    const { t } = this.props;
     const {
       courses
     } = this.state;
@@ -437,7 +439,7 @@ class CourseStore extends React.Component {
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title={this.state.course.name + " Store"} subtitle="Manage course store items"
+          <PageTitle sm="4" title={this.state.course.name + " " + t("Store")} subtitle="Manage course store items"
                      className="text-sm-left" />
         </Row>
 
@@ -499,8 +501,8 @@ class CourseStore extends React.Component {
                         Delete
                       </Button>
                       <Button disabled={this.state.disabled} theme="white" onClick={()=>showBuyersModal(product)}>
-                        <span outline className="text-light">
-                          <i className="material-icons">error_outline</i>
+                        <span className="text-light">
+                          <i className="material-icons">edit</i>
                         </span>{" "}
                         Usage Information
                       </Button>
@@ -520,4 +522,4 @@ class CourseStore extends React.Component {
   }
 }
 
-export default CourseStore;
+export default withTranslation()(CourseStore);

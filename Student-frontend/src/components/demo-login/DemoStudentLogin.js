@@ -32,6 +32,11 @@ const styles = theme => ({
     color: "DarkBlue",
     align: "center"
   },
+  subheader:{
+    color: "LimeGreen",
+    align: "center",
+    fontWeight: "bold",
+  },
 
   textField: {
     margin: "auto",
@@ -72,12 +77,12 @@ class DemoStudentLogin extends React.Component {
 
     var self = this;
     server.getTrialLessonByHash(function(response) {
+        localStorage.setItem('lesson_id', response.data.id);
         self.setState(
           {
-            lesson_id : response.data.id});
-        self.setState(
-          {
-            lessonName : response.data.name});
+            lesson_id : response.data.id,         
+            lessonName : response.data.name
+          })
     },
     function(error){
       console.log("Error in getTrialLessonByHash in constructor of DemoStudentLogin in DemoStudentLogin.js", error);
@@ -147,7 +152,6 @@ class DemoStudentLogin extends React.Component {
       Auth.idToken = response.idToken;
       Auth.expiresAt = expiresAt;
       Auth.sub = response.data.sub;
-      Auth.registerstudent()
       console.log("PUSH?");
       history.push("/lesson/" + self.state.lesson_id);
       console.log("PUSH!");
@@ -211,59 +215,69 @@ render(){
         <CardHeader
           classes={{
           title: classes.title,
+          subheader: classes.subheader
           }}
           title={"Join "+this.state.lessonName}
+          subheader={"Notice! If you already have a registered user, you can simply click on 'Login' in the top right corner."}
         />
         <CardContent>
-          <TextField
-            required
-            error={this.state.emptyName || this.state.studentNameTaken}
-            id="standard-required"
-            label={t("Student Name")}
-            className={classes.textField}
-            margin="normal"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-            onChange={this.updateStudentName}
-          />
-          <TextField
-            error={this.state.studentSeatTaken || this.state.emptySeat}
-            required
-            id="standard-number"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            label="Seat Number"
-            className={classes.textField}
-            margin="normal"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <FormatListNumberedIcon />
-                </InputAdornment>
-              ),
-            }}
-            onChange={this.updateStudentSeat}
-          />
-          <Button
-            disabled={ this.state.studentSeatTaken || this.state.emptySeat
-              || this.state.emptyName || this.state.disabled}
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            endIcon={<Icon>send</Icon>}
-            onClick={this.startDemoLesson}
-          >
-            {this.state.student_name=="Drunkadiy" ? "Drunkadiy is not Allowed" : t("Enter Lesson")}
-          </Button>
-        </CardContent>
+          <form className={classes.container}
+            onSubmit={(event)=>{
+              event.preventDefault();
+              this.startDemoLesson();
+            }}>
+              <div>
 
+                <TextField
+                  required
+                  error={this.state.emptyName || this.state.studentNameTaken}
+                  id="standard-required"
+                  label={t("Student Name")}
+                  className={classes.textField}
+                  margin="normal"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AccountCircle />
+                      </InputAdornment>
+                    ),
+                  }}
+                  onChange={this.updateStudentName}
+                />
+                <TextField
+                  error={this.state.studentSeatTaken || this.state.emptySeat}
+                  required
+                  id="standard-number"
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  label="Seat Number"
+                  className={classes.textField}
+                  margin="normal"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <FormatListNumberedIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  onChange={this.updateStudentSeat}
+                />
+                <Button
+                  disabled={ this.state.studentSeatTaken || this.state.emptySeat
+                    || this.state.emptyName || this.state.disabled}
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  endIcon={<Icon>send</Icon>}
+                  type="submit"
+                >
+                  {this.state.student_name=="Drunkadiy" ? "Drunkadiy is not Allowed" : t("Enter Lesson")}
+                </Button>
+              </div>
+          </form>       
+        </CardContent>
       </Card>
     );
   }

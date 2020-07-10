@@ -18,6 +18,12 @@ import SendIcon from '@material-ui/icons/Send';
 import Alert from 'react-bootstrap/Alert';
 
 import { withTranslation } from 'react-i18next';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
 
 import {
   Row,
@@ -76,10 +82,14 @@ class UserAccountCard extends React.Component
       wrongPassword:this.props.wrongPassword,
       usernameTaken:this.props.usernameTaken,
       emailTaken: this.props.emailTaken,
+      weak_password: this.props.weakPassword,
       tooMany:this.props.tooMany,
       isPhoneNumber:false,
       isEmail: false,
       fieldError: false,
+      showNewPassword: false,
+      showCurrPassword: false,
+
     }
     this.setState({details:  this.props.details});
 
@@ -101,6 +111,11 @@ class UserAccountCard extends React.Component
 
     this.setConfirmPassword = this.setConfirmPassword.bind(this);
     this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
+
+    this.handleClickShowNewPassword = this.handleClickShowNewPassword.bind(this);
+    this.handleClickShowCurrPassword = this.handleClickShowCurrPassword.bind(this);
+    this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
+
 
     this.setPhoneNumber = this.setPhoneNumber.bind(this);
     this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
@@ -129,6 +144,11 @@ class UserAccountCard extends React.Component
     if(prevProps.emailTaken!=this.props.emailTaken)
     {
       this.setState({emailTaken: this.props.emailTaken});
+      this.setState({fieldError:true})
+    }
+    if(prevProps.weakPassword!=this.props.weakPassword)
+    {
+      this.setState({weak_password: this.props.weakPassword});
       this.setState({fieldError:true})
     }
     if(prevProps.tooMany!=this.props.tooMany)
@@ -206,12 +226,23 @@ class UserAccountCard extends React.Component
 
   setNewPassword(value)
   {
+    this.props.changedWeakPassword();
     var dets = this.state.details;
     dets.newPassword = value;
     this.setState({details: dets});
   }
   handleNewPasswordChange(evnt)
   {
+    var pass = evnt.target.value;
+    if(pass.length>0 && (pass.length < 8 || pass.toLowerCase() === pass 
+    || pass.toUpperCase() === pass || !pass.match(/[0-9]/)))
+    {
+      this.setState({weak_password:true});
+    }
+    else 
+    {
+      this.setState({weak_password:false});
+    }
     this.setNewPassword(evnt.target.value);
   }
 
@@ -258,12 +289,25 @@ class UserAccountCard extends React.Component
       this.setState({isPhoneNumber: true})
     }
   }
+  handleClickShowNewPassword = () => {
+    this.setState({showNewPassword: !this.state.showNewPassword});
+  };
+  handleClickShowCurrPassword = () => {
+    this.setState({showCurrPassword: !this.state.showCurrPassword});
+  };
+
+
+  handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
+
 
   submit(event)
   {
     event.preventDefault();
     if (!this.state.isPhoneNumber || this.state.oldPassword==""
-          || !this.state.isEmail || this.state.usernameTaken || this.state.emailTaken)
+          || !this.state.isEmail || this.state.usernameTaken || this.state.emailTaken
+          || this.state.weak_password)
     {
       this.setState({fieldError:true})
       return
@@ -293,6 +337,14 @@ class UserAccountCard extends React.Component
            {t('Please contact administrator for further information')}.</p>
         </Alert>
       }
+      {this.state.weak_password &&
+        <Alert variant = "danger">
+          <Alert.Heading style={{color:"white"}}>{t('New Password is too weak!')}</Alert.Heading>
+            <p> {t('Any new password should be at least 8 symbols in length, and must contain ')}
+           {t('at least one digit, one upper case english letter, and at least one lower case english letter.')}</p>
+        </Alert>
+      }
+
       {this.state.fieldError &&
         <Alert variant = "dark">
           <Alert.Heading style={{color:"white"}}>{t("One of the Fields filled is wrong!")}</Alert.Heading>
@@ -331,6 +383,7 @@ class UserAccountCard extends React.Component
                 margin="normal"
               />
               <TextField
+                required
                 id="standard-required"
                 label={t("First Name")}
                 value={this.props.details.firstName}
@@ -340,6 +393,7 @@ class UserAccountCard extends React.Component
                 margin="normal"
               />
               <TextField
+                required
                 id="standard-required"
                 label={t("Last Name")}
                 value={this.props.details.lastName}
@@ -348,15 +402,28 @@ class UserAccountCard extends React.Component
                 margin="normal"
               />
 
-              <TextField
-                id="standard-required"
-                type="password"
-                label={t("New Password")}
-                onChange={this.handleNewPasswordChange}
-                value={this.state.details.newPassword}
-                className={classes.textField}
-                margin="normal"
-              />
+              <FormControl className={classes.textField} margin="normal">
+                <InputLabel htmlFor="standard-adornment-password">{"New Password"+(this.state.details.demoStudent?"*": "")}</InputLabel>
+                <Input
+                  error={this.state.weak_password}
+                  id="standard-adornment-password"
+                  type={this.state.showNewPassword ? 'text' : 'password'}
+                  value={this.state.details.newPassword}
+                  onChange={this.handleNewPasswordChange}
+                  required={this.state.details.demoStudent}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={this.handleClickShowNewPassword}
+                        onMouseDown={this.handleMouseDownPassword}
+                      >
+                        {this.state.showNewPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
               <TextField
                 error={!this.state.isPhoneNumber}
                 id="standard-required"
@@ -369,41 +436,39 @@ class UserAccountCard extends React.Component
               <Typography className={classes.instruction}>
                 {t("Enter Current Password and Press the Button in Order to Complete the action")}.
               </Typography>
-              <TextField
-                error={this.state.wrongPassword}
-                required
-                id="standard-required"
-                type="password"
-                label={t("Password")}
-                value={this.state.details.old_password}
-                onChange={this.handleConfirmPasswordChange}
-                className={classes.textField}
-                margin="normal"
-              />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                  type="submit"
-                  endIcon={<SendIcon/>}
-                >
-                  {t("Send")}
-                </Button>
+              <FormControl className={classes.textField} margin="normal">
+                <InputLabel htmlFor="standard-adornment-password">Current Password</InputLabel>
+                <Input
+                  error={this.state.wrongPassword}
+                  id="standard-adornment-password"
+                  type={this.state.showCurrPassword ? 'text' : 'password'}
+                  value={this.state.details.old_password}
+                  onChange={this.handleConfirmPasswordChange}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={this.handleClickShowCurrPassword}
+                        onMouseDown={this.handleMouseDownPassword}
+                      >
+                        {this.state.showCurrPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                type="submit"
+                endIcon={<SendIcon/>}
+              >
+                {t("Send")}
+              </Button>
 
             </div>
           </form>
-        </CardContent>
-        <CardContent>
-          <Row>
-          </Row>
-          <Row>
-            <Col>
-              <form >
-                <div>
-                </div>
-              </form>
-            </Col>
-          </Row>
         </CardContent>
       </Card >
     );

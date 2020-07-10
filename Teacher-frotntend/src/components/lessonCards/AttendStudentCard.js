@@ -152,6 +152,7 @@ class AttendStudentCard extends React.Component
     componentDidUpdate(prevProps, prevState) {
       if(prevProps.students!=this.props.students)
       {
+        console.log("New Students", this.props.students)
         this.setState({students: this.props.students});
       }
     }
@@ -181,7 +182,7 @@ class AttendStudentCard extends React.Component
           }
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-            <CardContent>
+            <CardContent style={{display:"flex", flexWrap:"wrap"}}>
               { this.state.students.map((student,idx) => {
                 return(<StudentButton
                   student={student}

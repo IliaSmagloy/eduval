@@ -36,6 +36,7 @@ class UserAccountDetails extends React.Component {
       too_many_attempts:false,
       username_taken: false,
       email_taken: false,
+      weak_password: false,
     };
 
 
@@ -98,6 +99,10 @@ class UserAccountDetails extends React.Component {
           {
             self.setState({email_taken:true});
           }
+          else if(error.response.data.error=="WEAK_PASSWORD")
+          {
+            self.setState({weak_password:true});
+          }
         }
 
         else
@@ -120,15 +125,15 @@ class UserAccountDetails extends React.Component {
     });
     if (student_payload)
     {
+      var demo = student_payload["https://emon-teach.com/demo_student"];
       var new_dets = {
-        username: student_payload["https://emon-teach.com/username"],
+        username: demo? "" : student_payload["https://emon-teach.com/username"],
         firstName: student_payload["https://emon-teach.com/first_name"],
         lastName: student_payload["https://emon-teach.com/last_name"],
         newPassword: "",
         oldPassword: "",
-        email: student_payload["email"],
- //       phoneNum: student_payload["https://emon-teach.com/phone_number"],
-        phoneNum: "",
+        email: demo? "" : student_payload["email"],
+        phoneNum: demo? "" : student_payload["https://emon-teach.com/phone_number"],
         demoStudent: student_payload["https://emon-teach.com/demo_student"]
     }
       self.setState({details: new_dets});
@@ -162,6 +167,8 @@ class UserAccountDetails extends React.Component {
       changedUsername={()=>{this.setState({username_taken:false})}}
       emailTaken={this.state.email_taken}
       changedEmail={()=>{this.setState({email_taken:false})}}
+      weakPassword={this.state.weak_password}
+      changedWeakPassword={()=>{this.setState({weak_password:false})}}
       />
     </div>
     );

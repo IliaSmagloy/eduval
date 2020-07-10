@@ -41,7 +41,7 @@ export default class UserActions extends React.Component {
     });
     if (student_payload)
     {
-      self.setState({username: student_payload["https://emon-teach.com/first_name"]+" "+student_payload["https://emon-teach.com/last_name"]});
+      self.setState({username: student_payload["https://emon-teach.com/first_name"]+" "+(student_payload["https://emon-teach.com/last_name"])});
     }
     else
     {
@@ -60,7 +60,12 @@ export default class UserActions extends React.Component {
   }
 
   login() {
-    auth.login();
+    if (window.location.href.includes("demo-invite?id=")){
+      auth.login(localStorage.getItem("lesson_id"));
+    }
+    else{
+      auth.login();
+    }
   }
 
 

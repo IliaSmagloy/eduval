@@ -501,8 +501,8 @@ class CourseStore extends React.Component {
                         Delete
                       </Button>
                       <Button disabled={this.state.disabled} theme="white" onClick={()=>showBuyersModal(product)}>
-                        <span className="text-light">
-                          <i className="material-icons">edit</i>
+                        <span outline className="text-light">
+                          <i className="material-icons">error_outline</i>
                         </span>{" "}
                         Usage Information
                       </Button>

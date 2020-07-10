@@ -5,7 +5,7 @@ service:        log
 
 provider:
     name:       aws
-    runtime:    nodejs8.10
+    runtime:    nodejs12.x
     stage:      prod
     region:     eu-central-1
 
@@ -62,7 +62,7 @@ functions:
                             paths:
                                 courseId: true
                                 studentId: true
-    getStudentLogCsv:
+    getCourseLogCsv:
             handler: src/get.csv
             description: Get blaaaaaaaaaaaaaaa
             events:

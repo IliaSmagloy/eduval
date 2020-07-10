@@ -112,7 +112,7 @@ const getCondensedLog = async (event, context, callback) => {
 				result.forEach((x) => {
 					// assume same date for every log with same lesson number
 					let date = JSON.stringify(x.dtime).split('T')[0];
-					date = date.substr(0, date.length - 1);
+					date = date.substr(1, date.length);
 					toRet[x.lessonNumber].date = date;
 					// console.log(x.dtime);
 				});
@@ -137,7 +137,7 @@ const getCondensedLog = async (event, context, callback) => {
 		});
 };
 
-// GET log/condensed/{studentId}/byCourse/{courseId}
+// GET log/condensed/{studentId}/byCourse/{courseId}/csv
 const getCondensedLogCsv = async (event, context, callback) => {
 	if (!event.pathParameters.courseId || !event.pathParameters.studentId) {
 		return callback(createError.BadRequest("Student's and course's IDs required."));
@@ -199,6 +199,10 @@ const getCondensedLogCsv = async (event, context, callback) => {
 
 			let resArray = toRet;
 
+			for (let i = 0; i < resArray.length; i += 1) {
+				resArray[i].lessonNumber += 1;
+			}
+
 			const csvHeader = Object.keys(resArray[0]).sort().join(',');
 
 			resArray = resArray.map(x => Object.entries(x)
@@ -206,10 +210,12 @@ const getCondensedLogCsv = async (event, context, callback) => {
 				.sort((a, b) => ((a[0] < b[0]) ? -1 : (a[0] > b[0]) ? 1 : 0))
 				.map(y => y[1]).join(',')).join('\r\n');
 
+			const now = new Date(Date.now());
+
 			callback(null, {
 				statusCode: 200,
 				headers: {
-					'Content-Disposition': ' attachment; filename="log.csv"',
+					'Content-Disposition': `attachment; filename="log-${now.getDay()}-${now.getMonth()}-${now.getFullYear()}-${now.getHours()}${now.getMinutes()}.csv"`,
 					'Content-Type': 'text/csv; charset=UTF-8',
 				},
 				body: `${csvHeader}\n${resArray}`,

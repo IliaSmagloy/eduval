@@ -193,17 +193,18 @@ render(){
       <Card className={classes.card}>
         {(this.state.studentSeatTaken || this.state.studentNameTaken) &&
           <Alert variant = "warning">
-            <Alert.Heading style={{color:"white"} }>This {this.state.studentSeatTaken ? "Seat" : "Name"} is Taken!</Alert.Heading>
+            <Alert.Heading style={{color:"white"} }>{t(this.state.studentSeatTaken ? "seatIsTaken" : "nameIsTaken")}</Alert.Heading>
             <p>
-              Select another {this.state.studentSeatTaken ? "seat" : "name"} if you want to proceed. <br/> Contact the teacher in case of further problems.
+              {t(this.state.studentSeatTaken ? "selectAnotherSeat" : "selectAnotherName")} <br/>
+              {t("Contact the teacher in case of further problems")}.
             </p>
           </Alert>
         }
         {this.state.lessonNotStarted &&
           <Alert variant = "danger">
-            <Alert.Heading style={{color:"white"}}>The Lesson is Yet to Start!</Alert.Heading>
-              <p> Unfortunately the lesson you're trying to log-in to didn't start yet. <br />
-              Please contact the teacher for further information.</p>
+            <Alert.Heading style={{color:"white"}}>{t("The Lesson is Yet to Start!")}</Alert.Heading>
+              <p> {t("Unfortunately the lesson you're trying to log-in to didn't start yet")}. <br/>
+              {t("Please contact the teacher for further information")}.</p>
           </Alert>
         }
         {this.state.errored &&
@@ -217,8 +218,8 @@ render(){
           title: classes.title,
           subheader: classes.subheader
           }}
-          title={"Join "+this.state.lessonName}
-          subheader={"Notice! If you already have a registered user, you can simply click on 'Login' in the top right corner."}
+          title={t("Join ") + this.state.lessonName}
+          subheader={t("Notice! If you already have a registered user, you can simply click on 'Login' in the top right corner")}
         />
         <CardContent>
           <form className={classes.container}
@@ -232,7 +233,7 @@ render(){
                   required
                   error={this.state.emptyName || this.state.studentNameTaken}
                   id="standard-required"
-                  label={t("Student Name")}
+                  label={t("Student's First Name")}
                   className={classes.textField}
                   margin="normal"
                   InputProps={{
@@ -252,7 +253,7 @@ render(){
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  label="Seat Number"
+                  label={t("Desk Number")}
                   className={classes.textField}
                   margin="normal"
                   InputProps={{

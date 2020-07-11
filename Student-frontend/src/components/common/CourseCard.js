@@ -298,7 +298,7 @@ class CourseCard extends React.Component
               <Alert variant = "warning">
                 <Alert.Heading style={{color:"white"} }>{t(this.state.studentSeatTaken ? "seatIsTaken" : "nameIsTaken")}</Alert.Heading>
                 <p>
-                  {t(this.state.studentSeatTaken ? "selectAnotherSeat" : "selectAnotherName")} <br/> {t("Contact the teacher in case of further problems.")}
+                  {t(this.state.studentSeatTaken ? "selectAnotherSeat" : "selectAnotherName")} <br/> {t("Contact the teacher in case of further problems")}
                 </p>
               </Alert>
             }

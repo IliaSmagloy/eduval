@@ -326,7 +326,7 @@ class UserAccountCard extends React.Component
           <p>
             {t("This is your first time in the system")}. <br/>
             {t("In order to keep all the EMons you've accumulated, you need to set a new password!")} <br/>
-            {t("ADVICE: You might want to change the username and email as you're required to enter them when you log in")}.
+            {t("You might want to change the username and email as you're required to enter them when you log in")}.
           </p>
         </Alert>
       }

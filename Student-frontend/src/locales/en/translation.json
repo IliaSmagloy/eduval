@@ -72,11 +72,12 @@
     "Louder": "Louder",
     "Students": "Students",
     "Join": "Join",
+    "Join ": "Join ",
     "seatIsTaken": "This Seat is Taken!",
     "nameIsTaken": "This Name is Taken!",
     "selectAnotherSeat": "Select another seat if you want to proceed.",
     "selectAnotherName": "Select another name if you want to proceed.",
-    "Contact the teacher in case of further problems.": "Contact the teacher in case of further problems.",
+    "Contact the teacher in case of further problems": "Contact the teacher in case of further problems",
     "Please contact system administrator": "Please contact system administrator",
     "Enter Desk Number": "Enter Desk Number",
     "Desk Number": "Desk Number",
@@ -137,6 +138,11 @@
     "Welcome to the System!": "Welcome to the System!",
     "This is your first time in the system": "This is your first time in the system",
     "In order to keep all the EMons you've accumulated, you need to set a new password!": "In order to keep all the EMons you've accumulated, you need to set a new password!",
-    "ADVICE: You might want to change the username and email as you're required to enter them when you log in": "ADVICE: You might want to change the username and email as you're required to enter them when you log in",
-    "Other Courses": "Other Courses"
+    "You might want to change the username and email as you're required to enter them when you log in": "You might want to change the username and email as you're required to enter them when you log in",
+    "Other Courses": "Other Courses",
+    "Student's First Name": "Student's First Name",
+    "Notice! If you already have a registered user, you can simply click on 'Login' in the top right corner": "Notice! If you already have a registered user, you can simply click on 'Login' in the top right corner",
+    "The Lesson is Yet to Start!": "The Lesson is Yet to Start!",
+    "Unfortunately the lesson you're trying to log-in to didn't start yet": "Unfortunately the lesson you're trying to log-in to didn't start yet",
+    "Please contact the teacher for further information": "Please contact the teacher for further information"
 }

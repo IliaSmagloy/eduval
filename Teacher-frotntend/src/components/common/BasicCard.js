@@ -1,21 +1,19 @@
 import React from "react";
 import { Card, CardBody, Badge, Row, Col } from "shards-react";
+import { withTranslation } from 'react-i18next';
 
 class BasicCard extends React.Component {
 
 
 
   render() {
-
+    const { t } = this.props;
     let about_us_content = {
        backgroundImage: require("../../images/content-management/bg_about.jpg"),
        category: "About Us",
        categoryTheme: "dark",
        author: "Anna Kunis",
-       authorAvatar: require("../../images/avatars/1.jpg"),
-       title: "Welcome to EMon - Teacher Dashboard panel.",
-       body:
-         "Here at EMon, you can manage your courses, encourge your students to learn by rewarding them with EMons for attendance and participation and much more. You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Teaching!"
+       authorAvatar: require("../../images/avatars/1.jpg")
      };
 
      let version_content = {
@@ -49,10 +47,10 @@ class BasicCard extends React.Component {
             <CardBody>
               <h5 className="card-title">
                 <a href="#" className="text-fiord-blue">
-                  {about_us_content.title}
+                  {t("WelcomeToEMon")}
                 </a>
               </h5>
-              <p className="card-text d-inline-block mb-3">{about_us_content.body}</p>
+              <p className="card-text d-inline-block mb-3">{t("WelcomeBody")}</p>
             </CardBody>
           </Card>
         </Col>
@@ -86,4 +84,4 @@ class BasicCard extends React.Component {
   }
 }
 
-export default BasicCard;
+export default withTranslation()(BasicCard);

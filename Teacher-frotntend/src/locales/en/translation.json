@@ -100,5 +100,7 @@
     "Send": "Send",
     "Unregister Student": "Unregister Student",
     "store": "store",
-    "Store": "Store"
+    "Store": "Store",
+    "WelcomeToEMon": "Welcome to EMon - Teacher Dashboard panel",
+    "WelcomeBody": "Here at EMon, you can manage your courses, encourge your students to learn by rewarding them with EMons for attendance and participation and much more. You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Teaching!"
 }

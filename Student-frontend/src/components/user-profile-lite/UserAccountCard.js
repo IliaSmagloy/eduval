@@ -325,8 +325,8 @@ class UserAccountCard extends React.Component
           <Alert.Heading style={{color:"white"} }>{t("Welcome to the System!")}</Alert.Heading>
           <p>
             {t("This is your first time in the system")}. <br/>
-            {t("In order to keep all the EMons you've accumulated, you need to set a new password!")} <br/>
-            {t("You might want to change the username and email as you're required to enter them when you log in")}.
+            {t("continueLearning")}. <br/>
+            {t("futureLogin")}.
           </p>
         </Alert>
       }

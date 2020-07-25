@@ -219,7 +219,7 @@ render(){
           subheader: classes.subheader
           }}
           title={t("Join ") + this.state.lessonName}
-          subheader={t("Notice! If you already have a registered user, you can simply click on 'Login' in the top right corner")}
+          subheader={t("registeredUser")}
         />
         <CardContent>
           <form className={classes.container}

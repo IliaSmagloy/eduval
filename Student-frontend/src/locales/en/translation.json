@@ -137,14 +137,14 @@
     "Number of Top Courses": "Number of Top Courses",
     "Welcome to the System!": "Welcome to the System!",
     "This is your first time in the system": "This is your first time in the system",
-    "In order to keep all the EMons you've accumulated, you need to set a new password!": "In order to keep all the EMons you've accumulated, you need to set a new password!",
-    "You might want to change the username and email as you're required to enter them when you log in": "You might want to change the username and email as you're required to enter them when you log in",
+    "continueLearning": "To continue studying this course and save the EMons accumulated in the first lesson, you must fill out a User Profile, i.e. your username, e-mail, your First Name and Last Name,  and a password containing at least 8 characters, consisting of Latin letters and numbers, one letter must be capitalized",
+    "futureLogin": "After it is confirmed by the system, you will be able to use this data to login to the system in the future",
     "Other Courses": "Other Courses",
     "Student's First Name": "Student's First Name",
-    "Notice! If you already have a registered user, you can simply click on 'Login' in the top right corner": "Notice! If you already have a registered user, you can simply click on 'Login' in the top right corner",
+    "registeredUser": "Notice! If you are already a registered user, you can simply click on 'Login' in the top right corner",
     "The Lesson is Yet to Start!": "The Lesson is Yet to Start!",
     "Unfortunately the lesson you're trying to log-in to didn't start yet": "Unfortunately the lesson you're trying to log-in to didn't start yet",
     "Please contact the teacher for further information": "Please contact the teacher for further information",
-    "WelcomeToEMon": "Welcome to EMon - Student Dashboard panel",
-    "WelcomeBody": "Here at EMon, you can manage your courses, learn, earn EMons and much more. You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Learning!"
+    "WelcomeToEMon": "Welcome to EMon - Student's Dashboard",
+    "WelcomeBody": "Here you can manage your courses, learn, earn EMons and much more. You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Learning!"
 }

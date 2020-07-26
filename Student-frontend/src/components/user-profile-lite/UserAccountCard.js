@@ -324,7 +324,7 @@ class UserAccountCard extends React.Component
         <Alert variant = "warning">
           <Alert.Heading style={{color:"white"} }>{t("Welcome to the System!")}</Alert.Heading>
           <p>
-            {t("This is your first time in the system")}. <br/>
+            {t("firstEntry")}. <br/>
             {t("continueLearning")}. <br/>
             {t("futureLogin")}.
           </p>

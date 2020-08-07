@@ -305,7 +305,7 @@ class CourseCard extends React.Component
 
             {this.state.errored &&
               <Alert variant = "dark">
-                <Alert.Heading style={{color:"white"}}>{t("An error has occured")+"!"}</Alert.Heading>
+                <Alert.Heading style={{color:"white"}}>{t("An error has occurred")+"!"}</Alert.Heading>
                   <p>{t("Please contact system administrator")}</p>
               </Alert>
             }

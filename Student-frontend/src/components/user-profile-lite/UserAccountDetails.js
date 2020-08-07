@@ -108,7 +108,7 @@ class UserAccountDetails extends React.Component {
         else
         {
           console.log("Error in updateTeacher in update in UserAccountDetails", error);
-          self.setState({error: "An error has occured", success: false, disabled: false});
+          self.setState({error: "An error has occurred", success: false, disabled: false});
           window.scrollTo(0, 0);
         }
       }

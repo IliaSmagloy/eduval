@@ -20,6 +20,7 @@ class ChooseLanguage extends React.Component {
   langToFlag = {
     'en': 'US',
     'ru': 'RU',
+    'he': 'IL',
   };
 
   constructor(props) {
@@ -80,6 +81,12 @@ class ChooseLanguage extends React.Component {
 
             <DropdownItem tag={Link} to="#" onClick={() => this.changeLang('ru')}> 
               <Flag name="RUS" format="png" pngSize={32} shiny={true} alt="Russian" basePath="/img/flags"/> Russian
+            </DropdownItem>
+
+            <DropdownItem divider />
+
+            <DropdownItem tag={Link} to="#" onClick={() => this.changeLang('he')}> 
+              <Flag name="IL" format="png" pngSize={32} shiny={true} alt="Hebrew" basePath="/img/flags"/> Hebrew
             </DropdownItem>
 
           </Collapse>

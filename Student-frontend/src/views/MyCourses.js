@@ -357,7 +357,7 @@ class MyCourses extends React.Component {
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title={t("My Courses")} subtitle={t("Manage eveyrthing in one place")}
+          <PageTitle sm="4" title={t("My Courses")} subtitle={t("Manage everything in one place")}
                      className="text-sm-left" />
         </Row>
 

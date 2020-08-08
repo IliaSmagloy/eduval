@@ -146,5 +146,6 @@
     "Unfortunately the lesson you're trying to log-in to didn't start yet": "Unfortunately the lesson you're trying to log-in to didn't start yet",
     "Please contact the teacher for further information": "Please contact the teacher for further information",
     "WelcomeToEMon": "Welcome to EMon - Student's Dashboard",
-    "WelcomeBody": "Here you can manage your courses, learn, earn EMons and much more. You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Learning!"
+    "WelcomeBody": "Here you can manage your courses, learn, earn EMons and much more.",
+    "WelcomeBody1": "You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Learning!"
 }

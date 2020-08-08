@@ -54,6 +54,7 @@ class BasicCard extends React.Component {
                 </a>
               </h5>
               <p className="card-text d-inline-block mb-3">{t("WelcomeBody")}</p>
+              <p className="card-text d-inline-block mb-3">{t("WelcomeBody1")}</p>
             </CardBody>
           </Card>
         </Col>

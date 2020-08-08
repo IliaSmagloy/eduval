@@ -45,7 +45,8 @@ const styles = theme => ({
     padding: " 5px 15px",
     overflow:"hidden",
     textOverflow:"ellipsis",
-    whiteSpace:"nowrap"
+    whiteSpace:"nowrap",
+    width: "120px"
   },
 
   margin: {
@@ -151,6 +152,7 @@ class StudentButton extends React.Component
           marginRight:"2em", 
           marginBottom: "2em ",
           maxWidth:"30%",
+
          }}>
         <Badge color="primary"
         badgeContent={"#" + this.state.student.desk}

@@ -16,6 +16,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 const themes = {
   ru: createMuiTheme({}, ruRU),
   en: createMuiTheme({}, enUS),
+  he: createMuiTheme({}, enUS),
 };
 
 

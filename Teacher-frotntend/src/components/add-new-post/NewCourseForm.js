@@ -71,7 +71,7 @@ class NewCourseForm extends React.Component {
       self.setState({disabled: false});
     }, function(error){
       console.log(error);
-      handler("An error has occured");
+      handler("An error has occurred");
       self.setState({disabled: false});
     }, {name: this.state.name, location: this.state.location,
       description: this.state.description, startDate: this.state.startDate,

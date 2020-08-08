@@ -104,7 +104,7 @@ class MyCourses extends React.Component {
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title={capitalize(t("My Courses"))} subtitle={t("Manage eveyrthing in one place")}
+          <PageTitle sm="4" title={capitalize(t("My Courses"))} subtitle={t("Manage everything in one place")}
                      className="text-sm-left" />
         </Row>
 
@@ -150,7 +150,7 @@ class MyCourses extends React.Component {
                   history.push("/lesson/" + course.id);
                 }, function(error){
                   console.log("Error in changeLessonStatus in playClicked passed to CourseCard in MyCourses.js" ,error);
-                  self.setState({disabled: false, error: "An error has occured while starting a lesson"});
+                  self.setState({disabled: false, error: "An error has occurred while starting a lesson"});
                 }, course.id, "LESSON_START");
               }}
 
@@ -167,7 +167,7 @@ class MyCourses extends React.Component {
                   history.push("/my-courses");
                 }, function(error){
                   console.log("Error in deleteCourse in MyCourses.js" ,error);
-                  self.setState({disabled: false, error: "An error has occured while deleing a course "});
+                  self.setState({disabled: false, error: "An error has occurred while deleing a course "});
                 }, course.id);
               }
 

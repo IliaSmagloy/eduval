@@ -301,7 +301,7 @@ class CourseStore extends React.Component {
         server.deleteItem((response)=>{window.location.reload();},
         (err)=>{
           console.log("Error in deleteItem in Button in modal of deleteItem in CourseStore.js",err);
-          self.setState({disabled: false, error: "An error has occured"});
+          self.setState({disabled: false, error: "An error has occurred"});
         },
         self.state.current_item.id, self.props.match.params.id);
       }}>Yes</Button>
@@ -413,7 +413,7 @@ class CourseStore extends React.Component {
               window.location.reload();
             }, (err)=>{
               console.log("Error in createNewItem in Adding New Item button in CourseStore.js", err);
-              self.setState({disabled: false, error: "An error has occured"}
+              self.setState({disabled: false, error: "An error has occurred"}
             );
             window.scrollTo(0, 0);}, self.state.current_item, self.props.match.params.id);
           }
@@ -422,7 +422,7 @@ class CourseStore extends React.Component {
               window.location.reload();
             }, (err)=>{
               console.log("Error in updateItem in Updating New Item button in CourseStore.js", err);
-              self.setState({disabled: false, error: "An error has occured"
+              self.setState({disabled: false, error: "An error has occurred"
             });
             window.scrollTo(0, 0);}, self.state.current_item, self.props.match.params.id);
             //updating existing item

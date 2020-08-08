@@ -515,7 +515,7 @@ class Lesson extends React.Component {
 
 
       {this.state.error &&
-      <TimeoutAlert className="mb-0" theme="danger" msg={t("An error has occured")+"!"} time={10000}/>
+      <TimeoutAlert className="mb-0" theme="danger" msg={t("An error has occurred")+"!"} time={10000}/>
       }
       {this.state.success &&
       <TimeoutAlert className="mb-0" theme="success" msg={t("Messages sent successfully!")} time={10000}/>

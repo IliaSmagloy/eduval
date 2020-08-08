@@ -24,7 +24,7 @@
     "User Profile": "User Profile",
     "Trial Lesson": "Trial Lesson",
     "All Rights Reserved - Arkadiy@Iluha © 2019": "All Rights Reserved - Arkadiy@Iluha © 2019",
-    "Manage eveyrthing in one place": "Manage eveyrthing in one place",
+    "Manage everything in one place": "Manage everything in one place",
     "Success! Your course has been added!": "Success! Your course has been added!",
     "No Courses?": "No Courses?",
     "Create a new course right now!": "Create a new course right now!",
@@ -38,7 +38,7 @@
     "Class Room": "Class Room",
     "Help your students find the class room": "Help your students find the class room",
     "Create New Course": "Create New Course",
-    "An error has occured": "An error has occured",
+    "An error has occurred": "An error has occurred",
     "Yes": "Yes",
     "No": "No",
     "unregisterStudentConfirm": "Are you sure you want to remove {{name}} from the course?",
@@ -102,5 +102,6 @@
     "store": "store",
     "Store": "Store",
     "WelcomeToEMon": "Welcome to EMon - Teacher's Dashboard",
-    "WelcomeBody": "Here you can manage your courses, encourge your students to learn by rewarding them with EMons for attendance and participation and much more. You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Teaching!"
+    "WelcomeBody": "Here you can manage your courses, encourge your students to learn by rewarding them with EMons for attendance and participation and much more.",
+    "WelcomeBody1": "You are more then welcome to discover the features of our system and make sure to send us your notes. Good Luck and Happy Teaching!"
 }

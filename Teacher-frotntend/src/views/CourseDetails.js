@@ -107,7 +107,7 @@ class CourseDetails extends React.Component {
       window.location.reload();
     }, function(error){
       console.log("Error in updateStudents in CourseDetails.js", error);
-      self.setState({error: "An error has occured", success: false, disabled: false});
+      self.setState({error: "An error has occurred", success: false, disabled: false});
       window.scrollTo(0, 0);
     }, students, this.props.match.params.id);
   }
@@ -140,7 +140,7 @@ class CourseDetails extends React.Component {
       window.scrollTo(0, 0);
     }, function(error){
       console.log("failed", error);
-      self.setState({error: "An error has occured", success: false, disabled: false});
+      self.setState({error: "An error has occurred", success: false, disabled: false});
       window.scrollTo(0, 0);
     }, self.state.course);
   }
@@ -241,7 +241,7 @@ class CourseDetails extends React.Component {
       <Button disabled={this.state.disabled} theme="success" onClick={()=>{
         self.setState({disabled: true});
         server.deleteCourse((response)=>{history.push("/my-courses");},
-        (err)=>{self.setState({disabled: false, error: t("An error has occured")}); window.scrollTo(0, 0);},
+        (err)=>{self.setState({disabled: false, error: t("An error has occurred")}); window.scrollTo(0, 0);},
         self.props.match.params.id);
       }}>{t("Yes")}</Button>
       <Button theme="danger" disabled={this.state.disabled} style={{float: "right"}} onClick={closeDeleteCourseModal}>{t("No")}</Button>
@@ -332,7 +332,7 @@ class CourseDetails extends React.Component {
                           server.changeLessonStatus(function(response){
                             history.push("/lesson/" + self.props.match.params.id);
                           }, function(error){
-                            self.setState({disabled: false, error: t("An error has occured")}); window.scrollTo(0, 0);
+                            self.setState({disabled: false, error: t("An error has occurred")}); window.scrollTo(0, 0);
                           }, this.props.match.params.id, "LESSON_START");
                         }} style={{float:"right"}}>{(this.state.activeLesson != this.props.match.params.id && t("Start Lesson")) || (this.state.activeLesson == this.props.match.params.id && t("Resume Lesson"))}</Button>
                       </Form>

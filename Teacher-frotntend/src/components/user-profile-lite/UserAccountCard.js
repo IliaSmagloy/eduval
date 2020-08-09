@@ -403,7 +403,7 @@ class UserAccountCard extends React.Component
               />
 
               <FormControl className={classes.textField} margin="normal">
-                <InputLabel htmlFor="standard-adornment-password">{"New Password"+(this.state.details.demoStudent?"*": "")}</InputLabel>
+                <InputLabel htmlFor="standard-adornment-password">{t("New Password")+(this.state.details.demoStudent?"*": "")}</InputLabel>
                 <Input
                   error={this.state.weak_password}
                   id="standard-adornment-password"

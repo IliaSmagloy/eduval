@@ -17,7 +17,7 @@ import Callback from "./views/Callback";
 import CourseDetails from "./views/CourseDetails";
 import Lesson from "./views/Lesson";
 import DemoLesson from "./views/DemoLesson";
-import CourseSummery from "./views/CourseSummery";
+import CourseSummary from "./views/CourseSummary";
 import Store from "./views/Store";
 
 export default [
@@ -81,7 +81,7 @@ export default [
   {
     path: "/course-summery/:id",
     layout: DefaultLayout,
-    component: CourseSummery
+    component: CourseSummary
   },
   {
     path: "/demo-invite",

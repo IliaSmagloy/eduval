@@ -175,7 +175,7 @@ class CourseDetails extends React.Component {
                 </CardHeader>
                 {
                   !this.state.condensed &&
-                  <h2 style = {{textAlign:"center"}}>{t("Waiting For Graph")}</h2>
+                  <h2 style = {{textAlign:"center"}}>{t("c")}</h2>
                 }
                 {
                   this.state.condensed &&

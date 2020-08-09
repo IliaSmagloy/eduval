@@ -18,6 +18,7 @@ import TimeoutAlert from "../components/common/TimeoutAlert";
 import awsIot  from 'aws-iot-device-sdk';
 import CoinImage from "../images/midEcoin.png"
 import server from '../Server/Server';
+import { withTranslation } from 'react-i18next';
 
 
 
@@ -158,6 +159,7 @@ class Store extends React.Component {
       PostsListFour
     } = this.state;
     var rand;
+    const { t } = this.props;
 
 
 
@@ -178,23 +180,20 @@ class Store extends React.Component {
           }
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title={this.state.course.name+"'s Store"} subtitle="You can buy stuff with your EMons"
+          <PageTitle sm="4" title={this.state.course.name + t("CourseStore")} subtitle={t("BuyStuff")}
                      className="text-sm-left" />
-
-
         </Row>
         <Row >
               <Col >
-                <div style={{fontSize: 20}}><p>You have {this.state.balance} <img alt="EMons" style={{width:"1.5em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /> in this course</p></div>
+                <div style={{fontSize: 20}}><p>{t("storeBalance1")} {this.state.balance} <img alt="EMons" style={{width:"1.5em", marginLeft:"0.2em", marginBottom:"0.2em"}} src={CoinImage} /> {t("storeBalance2")}</p></div>
               </Col>
         </Row>
 
         <Row >
               <Col >
-                <p style={{fontSize: 20}}>{Array.from(this.state.PostsListThree).length == 0 ? "The store is empty!" : null}</p>
+                <p style={{fontSize: 20}}>{Array.from(this.state.PostsListThree).length == 0 ? t("StoreEmpty") : null}</p>
               </Col>
         </Row>
-
 
         {/* First Row of Posts */}
         <Row>
@@ -212,10 +211,6 @@ class Store extends React.Component {
                 <h4 className="card-title" style={{ color:  this.stringToColour(post.name) }}>{post.name}</h4>
                 </Col>
                 </Row>
-
-
-
-
                   <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Description: </b>{" "+ post.description}</p>
                   <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Cost: </b>{" "+post.cost}</p>
                   <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Amount Left: </b>{" "+post.amountAvailable}</p>
@@ -246,4 +241,4 @@ class Store extends React.Component {
 
 }
 
-export default Store;
+export default withTranslation()(Store);

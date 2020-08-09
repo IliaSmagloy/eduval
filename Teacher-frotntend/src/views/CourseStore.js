@@ -439,7 +439,7 @@ class CourseStore extends React.Component {
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title={this.state.course.name + " " + t("Store")} subtitle="Manage course store items"
+          <PageTitle sm="4" title={this.state.course.name + " " + t("Store")} subtitle={t("Manage course store items")}
                      className="text-sm-left" />
         </Row>
 

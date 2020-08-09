@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import axios from 'axios';
+import { withTranslation } from 'react-i18next';
 import {
   Card,
   CardHeader,
@@ -18,9 +19,9 @@ import {
   CardBody
 } from "shards-react";
 import PageTitle from "../components/common/PageTitle";
-import "./CourseSummery.css"
+import "./CourseSummary.css"
 import server from "../Server/Server";
-class CourseSummery extends React.Component {
+class CourseSummary extends React.Component {
     constructor(props) {
       super(props);
         const EmojiEnum = {
@@ -71,12 +72,13 @@ class CourseSummery extends React.Component {
           }, this.state.lesson_id);
       }
     render(){
+      const { t } = this.props;
         return(
           <Container fluid className="main-content-container px-4 pb-4">
             {/* Page Header */}
             <Row noGutters className="page-header py-4">
               <PageTitle sm="4" title={this.state.course_name}
-              subtitle="Course Summary" className="text-sm-left" />
+              subtitle={t("Course Summary")} className="text-sm-left" />
             </Row>
 
             <Row>
@@ -106,8 +108,8 @@ class CourseSummery extends React.Component {
                           </Row>
 
                           <Row form>
-                            {/* E-Mony earned */}
-                            <p>Total EMons: {this.state.total_reward_money}</p>
+                            {/* EMons earned */}
+                            <p>{t("Total EMons: ")} {this.state.total_reward_money}</p>
                           </Row>
 
                           <a href={"/Overview"}>
@@ -125,7 +127,7 @@ class CourseSummery extends React.Component {
            <ListGroup flush>
                 <ListGroupItem className="p-0 px-3 pt-3">
               <CardHeader className="border-bottom">
-                <h5 className="m-0">All the Emojis from this lesson</h5><br/>
+                <h5 className="m-0">{t("All the Emojis from this lesson")}</h5><br/>
                 <ul className='rows' style={{textAlign:'center', padding:'0'}}>
                 {this.state.Emojis.map((emoji) => (<li style={{display:'inline', margin:'5px', fontSize:'1.6em'}} className='row'>{emoji}</li>))}
                 </ul>
@@ -142,4 +144,4 @@ class CourseSummery extends React.Component {
 }
 
 
-export default CourseSummery;
+export default withTranslation()(CourseSummary);

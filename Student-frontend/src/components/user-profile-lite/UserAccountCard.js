@@ -415,7 +415,7 @@ class UserAccountCard extends React.Component
                 margin="normal"
               />
               <FormControl className={classes.textField} margin="normal">
-                <InputLabel htmlFor="standard-adornment-password">{"New Password"+(this.state.details.demoStudent?"*": "")}</InputLabel>
+                <InputLabel htmlFor="standard-adornment-password">{t("New Password")+(this.state.details.demoStudent?"*": "")}</InputLabel>
                 <Input
                   error={this.state.weak_password}
 
@@ -449,8 +449,8 @@ class UserAccountCard extends React.Component
               />
               <Typography className={classes.instruction}>
                 {
-                  (!this.state.details.demoStudent ? "Enter Current Password and " : "")
-                  + "Press the Button in Order to Complete the action."
+                  (!this.state.details.demoStudent ? t("EnterCurrentPassword") : "")
+                  + t("PressToComplete")
                 }
               </Typography>
               { !this.state.details.demoStudent &&

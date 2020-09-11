@@ -10,14 +10,16 @@ import UsersByDevice from "./../components/blog/UsersByDevice";
 import NewDraft from "./../components/blog/NewDraft";
 import Discussions from "./../components/blog/Discussions";
 import TopReferrals from "./../components/common/TopReferrals";
+import {  useTranslation } from 'react-i18next';
 
 import auth from "../Auth/Auth"
 
-const Overview = ({ smallStats }) => (
-  <Container fluid className="main-content-container px-4">
+const Overview = ({ smallStats }) => {
+  const { t } = useTranslation();
+  return <Container fluid className="main-content-container px-4">
     {/* Page Header */}
     <Row noGutters className="page-header py-4">
-      <PageTitle title="Student App" subtitle="Your home page" className="text-sm-left mb-3" />
+      <PageTitle title={t("Student App")} subtitle={t("Your home page")} className="text-sm-left mb-3" />
     </Row>
 
     {/* Small Stats Blocks */}
@@ -35,7 +37,7 @@ const Overview = ({ smallStats }) => (
 
 
   </Container>
-);
+};
 
 Overview.propTypes = {
   /**

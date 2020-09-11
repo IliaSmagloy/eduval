@@ -7,7 +7,8 @@ import withTracker from "./withTracker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
 import "./shards-dashboard/styles/EMON-styles.css";
-import { enUS, ruRU } from '@material-ui/core/locale';
+import { enUS, ruRU} from '@material-ui/core/locale';
+import { heIL } from '@material-ui/core/locale';
 
 import { useTranslation } from 'react-i18next';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -16,7 +17,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 const themes = {
   ru: createMuiTheme({}, ruRU),
   en: createMuiTheme({}, enUS),
-  he: createMuiTheme({}, enUS),
+  he: createMuiTheme({}, heIL)
 };
 
 

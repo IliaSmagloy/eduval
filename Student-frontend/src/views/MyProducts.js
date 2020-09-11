@@ -20,6 +20,7 @@ import CoinImage from "../images/midEcoin.png"
 import Dropdown from 'react-dropdown'
 import Select from 'react-select';
 import server from '../Server/Server';
+import { withTranslation } from 'react-i18next';
 
 
 const customStyles = {
@@ -143,6 +144,7 @@ class MyProducts extends React.Component {
             courses
         } = this.state;
         var rand;
+        const { t } = this.props;
 
         return (
 
@@ -160,7 +162,7 @@ class MyProducts extends React.Component {
           }
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title="Your Products" subtitle="You can see here the products you bought"
+          <PageTitle sm="4" title={t("YourProducts")} subtitle={t("productsBought")}
                      className="text-sm-left" />
 
 
@@ -225,4 +227,5 @@ class MyProducts extends React.Component {
     );
   }
 }
-export default MyProducts;
+
+export default withTranslation()(MyProducts);

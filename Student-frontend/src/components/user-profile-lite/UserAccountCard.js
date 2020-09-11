@@ -455,7 +455,7 @@ class UserAccountCard extends React.Component
               </Typography>
               { !this.state.details.demoStudent &&
                 <FormControl className={classes.textField} margin="normal">
-                  <InputLabel htmlFor="standard-adornment-password">Current Password</InputLabel>
+                  <InputLabel htmlFor="standard-adornment-password">{t("Current Password")}</InputLabel>
                   <Input
                     error={this.state.wrongPassword}
                     id="standard-adornment-password"

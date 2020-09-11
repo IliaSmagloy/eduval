@@ -434,8 +434,8 @@ class Lesson extends React.Component {
           <Col lg="4" className="mb-4" >
             {/* Sliders & Progress Bars */}
             <StudentMessageCard
-            title={t("Send a Message to the Teacher")}
-            subtitle={t("Choose a Message to Send")}
+            title={t("MsgTeacher")}
+            subtitle={t("ChooseMsg")}
             send_questions={()=>{this.handleMessageClick(this.state.messageRows[0]);}}
             send_go_out={()=>{this.handleMessageClick(this.state.messageRows[1])}}
             send_answer={()=>{this.handleMessageClick(this.state.messageRows[2]);}}

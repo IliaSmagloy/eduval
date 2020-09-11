@@ -94,22 +94,22 @@ class CourseSummary extends React.Component {
                         <Form>
                           <Row form>
                             {/* Course Name */}
-                            <p>Class Name: {this.state.course_name}</p>
+                            <p>{t("ClassName")} {this.state.course_name}</p>
                           </Row>
 
                           <Row form>
                             {/* Lesson description */}
-                            <p>Lesson's description: {this.state.course_description}</p>
+                            <p>{t("LessonDescription")} {this.state.course_description}</p>
                           </Row>
 
                           <Row form>
                             {/* Course Location */}
-                            <p>Location: {this.state.course_location}</p>
+                            <p>{t("Location")} {this.state.course_location}</p>
                           </Row>
 
                           <Row form>
                             {/* EMons earned */}
-                            <p>{t("Total EMons: ")} {this.state.total_reward_money}</p>
+                            <p>{t("TotalEMons")} {this.state.total_reward_money}</p>
                           </Row>
 
                           <a href={"/Overview"}>

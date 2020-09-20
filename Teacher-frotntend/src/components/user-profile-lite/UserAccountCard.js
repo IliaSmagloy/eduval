@@ -339,9 +339,9 @@ class UserAccountCard extends React.Component
       }
       {this.state.weak_password &&
         <Alert variant = "danger">
-          <Alert.Heading style={{color:"white"}}>{t('New Password is too weak!')}</Alert.Heading>
-            <p> {t('Any new password should be at least 8 symbols in length, and must contain ')}
-           {t('at least one digit, one upper case english letter, and at least one lower case english letter.')}</p>
+          <Alert.Heading style={{color:"white"}}>{t("NewPasswordWeak")}</Alert.Heading>
+            <p> {t("NewPasswordContain")}
+           {t("OneDigitUpperLower")}</p>
         </Alert>
       }
 
@@ -434,10 +434,10 @@ class UserAccountCard extends React.Component
                 margin="normal"
               />
               <Typography className={classes.instruction}>
-                {t("Enter Current Password and Press the Button in Order to Complete the action")}.
+                {t("EnterCurrentPasswordPress")}.
               </Typography>
               <FormControl className={classes.textField} margin="normal">
-                <InputLabel htmlFor="standard-adornment-password">Current Password</InputLabel>
+                <InputLabel htmlFor="standard-adornment-password">{t("Current Password")}</InputLabel>
                 <Input
                   error={this.state.wrongPassword}
                   id="standard-adornment-password"

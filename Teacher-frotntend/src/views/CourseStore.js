@@ -449,14 +449,14 @@ class CourseStore extends React.Component {
           <CardHeader className="border-bottom" >
             <Row>
             <Col sm="9">
-            <h6 className="m-0">Items</h6>
+            <h6 className="m-0">{t("Items")}</h6>
             </Col>
             <Col sm="3">
             <Button theme="white" style={{width:"100%"}} disabled={this.state.disabled} onClick={this.showNewItemModal}>
               <span className="text-success" >
                 <i className="material-icons">add</i>
               </span>{" "}
-              New Item
+              {t("New Item")}
             </Button>
             </Col>
             </Row>
@@ -480,8 +480,8 @@ class CourseStore extends React.Component {
                   {/* Content :: Body */}
                   <div style={{marginLeft:"3.5em"}}>
                   <p className="m-0 my-1 mb-2 text-muted">{product.description}</p>
-                  <p className="m-0 my-1 mb-2 text-muted">Price: {product.cost}</p>
-                  <p className="m-0 my-1 mb-2 text-muted">Items left: {product.amountAvailable}</p>
+                  <p className="m-0 my-1 mb-2 text-muted">{t("Price")}: {product.cost}</p>
+                  <p className="m-0 my-1 mb-2 text-muted">{t("Items Left")}: {product.amountAvailable}</p>
                   </div>
                   </Col>
                   <Col sm="3">
@@ -492,19 +492,19 @@ class CourseStore extends React.Component {
                         <span className="text-light">
                           <i className="material-icons">edit</i>
                         </span>{" "}
-                        Edit
+                        {t("Edit")}
                       </Button>
                       <Button disabled={this.state.disabled} theme="white" onClick={()=>showDeleteItemModal(product)}>
                         <span className="text-danger">
                           <i className="material-icons">clear</i>
                         </span>{" "}
-                        Delete
+                        {t("Delete")}
                       </Button>
                       <Button disabled={this.state.disabled} theme="white" onClick={()=>showBuyersModal(product)}>
                         <span outline className="text-light">
                           <i className="material-icons">error_outline</i>
                         </span>{" "}
-                        Usage Information
+                        {t("Usage Information")}
                       </Button>
                     </ButtonGroup>
                   </div>

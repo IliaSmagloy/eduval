@@ -314,7 +314,7 @@ class CourseCard extends React.Component
             </LightTooltip>
 
             { this.state.demo_course && 
-              <LightTooltip title={t("Show Invite Link and QR Code")} placement="bottom-end">
+              <LightTooltip title={t("ShowInviteLink")} placement="bottom-end">
                 <IconButton aria-label="links"
                   className={classes.link}
                   disabled={!this.state.demo_course}

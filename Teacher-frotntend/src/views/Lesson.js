@@ -527,7 +527,7 @@ class Lesson extends React.Component {
             <PageTitle sm="4" title={this.state.course_name} subtitle={t("Lesson View")} className="text-sm-left" />
           </Col>
           <Col xs="2" sm="2" md="2" lg="2" style={{textAlign: "right" }}>
-            <LightTooltip title={t("Show Invite Link and QR Code")} placement="bottom-end" className={classes.tooltip}>
+            <LightTooltip title={t("ShowInviteLink")} placement="bottom-end" className={classes.tooltip}>
               <IconButton aria-label="links"
                 className={classes.delete}
                 disabled={!this.state.demo_course}

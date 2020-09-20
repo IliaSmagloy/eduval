@@ -202,9 +202,9 @@ class MyProducts extends React.Component {
 
 
 
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Description: </b>{" "+ product.description}</p>
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Amount Left: </b>{" "+(product.amount - product.amountUsed)}</p>
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Status: </b>{(product.isActive) ? "Active" : "Not Active"}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Description")}: </b>{" "+ product.description}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Amount Left")}: </b>{" "+(product.amount - product.amountUsed)}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Status")}: </b>{(product.isActive) ? "Active" : "Not Active"}</p>
 
 
                 </CardBody>
@@ -212,7 +212,7 @@ class MyProducts extends React.Component {
                   <div className="card-post__author d-flex">
                     <div className="d-flex flex-column justify-content-center ml-3">
                     <a ><Button ssize="sm"   theme="white" disabled={!product.isActive} onClick={() => {this.productuse(product)}}>
-                      <i className="far  mr-1" /> Use
+                      <i className="far  mr-1" /> {t("Use")}
                     </Button></a>
                     </div>
                   </div>

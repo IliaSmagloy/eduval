@@ -211,16 +211,16 @@ class Store extends React.Component {
                 <h4 className="card-title" style={{ color:  this.stringToColour(post.name) }}>{post.name}</h4>
                 </Col>
                 </Row>
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Description: </b>{" "+ post.description}</p>
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Cost: </b>{" "+post.cost}</p>
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Amount Left: </b>{" "+post.amountAvailable}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Description")}: </b>{" "+ post.description}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Cost")}: </b>{" "+post.cost}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Amount Left")}: </b>{" "+post.amountAvailable}</p>
 
                 </CardBody>
                 <CardFooter className="border-top d-flex">
                   <div className="card-post__author d-flex">
                     <div className="d-flex flex-column justify-content-center ml-3">
                     <a ><Button ssize="sm"   theme="white" onClick={() => {this.postbuy(post)}}>
-                      <i className="far  mr-1" /> Buy
+                      <i className="far  mr-1" /> {t("Buy")}
                     </Button></a>
                     </div>
                   </div>

@@ -283,8 +283,8 @@ class CourseStore extends React.Component {
     let closeItemModal = this.closeItemModal;
     let showDeleteItemModal = this.showDeleteItemModal;
     let closeDeleteModal = this.closeDeleteModal;
-    let self = this;
     let showBuyersModal = this.showBuyersModal;
+    let self = this;
 
     return (
       <div>
@@ -313,7 +313,7 @@ class CourseStore extends React.Component {
         onRequestClose={this.closeInfoModal}
         style={customStyles}
       >
-      <h3>Students who bought "{this.state.current_item.name}"</h3>
+      <h3>{t("Students who bought")} {this.state.current_item.name}</h3>
 
       <table className="table mb-0">
         <thead className="bg-light">
@@ -322,16 +322,16 @@ class CourseStore extends React.Component {
             #
             </th>
             <th scope="col" className="border-0">
-            Name
+            {t("Name")}
             </th>
             <th scope="col" className="border-0">
-            Email
+            {t("Email")}
             </th>
             <th scope="col" className="border-0">
-            Use count
+            {t("Use count")}
             </th>
             <th scope="col" className="border-0">
-            Buy count
+            {t("Buy count")}
             </th>
           </tr>
         </thead>
@@ -501,7 +501,7 @@ class CourseStore extends React.Component {
                         {t("Delete")}
                       </Button>
                       <Button disabled={this.state.disabled} theme="white" onClick={()=>showBuyersModal(product)}>
-                        <span outline className="text-light">
+                        <span className="text-light">
                           <i className="material-icons">error_outline</i>
                         </span>{" "}
                         {t("Usage Information")}

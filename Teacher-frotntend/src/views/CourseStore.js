@@ -369,28 +369,28 @@ class CourseStore extends React.Component {
       }
       <Form>
         <FormGroup>
-          <label htmlFor="itemName">Item Name</label>
+          <label htmlFor="itemName">{t("Item Name")}</label>
           <FormInput id="itemName" placeholder="What are you selling" value={this.state.current_item.name} onChange={this.handleNameInput}/>
         </FormGroup>
 
         <FormGroup>
-          <label htmlFor="itemName">Item Description</label>
+          <label htmlFor="itemName">{t("Description")}</label>
           <FormInput id="itemName" placeholder="Describe your item for sale" value={this.state.current_item.description} onChange={this.handleDescriptionInput}/>
         </FormGroup>
 
         <Row form>
           <Col md="6" className="form-group">
-            <label htmlFor="itemName">Amount</label>
+            <label htmlFor="itemName">{t("Amount")}</label>
             <FormInput id="itemName" type="number" value={this.state.current_item.amountAvailable} onChange={this.handleAmountInput}/>
           </Col>
           <Col md="6">
-            <label htmlFor="itemName">Item Price</label>
+            <label htmlFor="itemName">{t("Price")}</label>
             <FormInput id="itemName" type="number" value={this.state.current_item.cost} onChange={this.handlePriceInput}/>
           </Col>
         </Row>
 
         <FormGroup>
-          <label htmlFor="itemName">End Date</label>
+          <label htmlFor="itemName">{t("End Date")}</label>
           <FormInput id="itemName" type="date"  value={this.state.current_item.sellByDate} onChange={this.handleLastDateInput}/>
         </FormGroup>
       </Form>

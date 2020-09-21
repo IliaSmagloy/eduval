@@ -412,12 +412,4 @@ MyCourses.propTypes = {
   classes:PropTypes.object.isRequired,
 };
 
-
 export default withTranslation()(withStyles(styles)(MyCourses));
-
-// <CourseCard
-//   name={post.name}
-//   description={post.description}
-//   id={post.id}
-//   play_pushed={this.state.lessons_student_status[post.id]}
-// />

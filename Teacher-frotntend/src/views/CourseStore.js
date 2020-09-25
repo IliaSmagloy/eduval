@@ -175,7 +175,7 @@ class CourseStore extends React.Component {
   }
 
   showNewItemModal() {
-    this.setState({modalIsOpen: true, titleModal: "Add new item to \"" + this.state.course.name + "\" store", current_item: {
+    this.setState({modalIsOpen: true, titleModal: "AddNewItem", current_item: {
       id: -1,
       name: "",
       description: "",
@@ -191,7 +191,7 @@ class CourseStore extends React.Component {
     edit_item.sellByDate = edit_item.sellByDate.substring(0,10);
 
     this.setState({modalIsOpen: true,
-      titleModal: "Update \"" + edit_item.name + "\"",
+      titleModal: "Update item",
       current_item: edit_item});
   }
 
@@ -223,6 +223,7 @@ class CourseStore extends React.Component {
     }, (err)=>{console.log("Error in getProducts in componentDidMount in CourseStore.js", err);}
       , this.props.match.params.id);
     server.getProductUse((response)=>{
+      console.log(response.data);
       self.setState({used_items: response.data});
     }, (err)=>{console.log("Error in getProductUse in componentDidMount in CourseStore.js", err);}
     , this.props.match.params.id);
@@ -314,7 +315,6 @@ class CourseStore extends React.Component {
         style={customStyles}
       >
       <h3>{t("Students who bought")} {this.state.current_item.name}</h3>
-
       <table className="table mb-0">
         <thead className="bg-light">
           <tr>
@@ -336,9 +336,10 @@ class CourseStore extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.used_items.filter(item=>item.id == this.state.current_item.id).map((item, idx)=>
+         {this.state.used_items.filter(item=>item.id == this.state.current_item.id).map((item)=>
             item.students.map((student, i)=>
               <tr key={i}>
+                {console.log(item)}
                 {console.log(student)}
                 <td> {i+1} </td>
                 <td> {student.name} </td>
@@ -351,7 +352,6 @@ class CourseStore extends React.Component {
         </tbody>
       </table>
 
-
       <Button theme="danger" disabled={this.state.disabled} style={{float: "right"}} onClick={this.closeInfoModal}>Close</Button>
       </Modal>
 
@@ -361,7 +361,7 @@ class CourseStore extends React.Component {
         style={customStyles}
         contentLabel="Example Modal"
       >
-      <h3>{this.state.titleModal}</h3>
+      <h3>{t(this.state.titleModal)}</h3>
       {this.state.error && this.state.errorInModal &&
         <Alert variant = "warning">
           <Alert.Heading style={{color:"white"} }>{this.state.error}</Alert.Heading>
@@ -370,12 +370,12 @@ class CourseStore extends React.Component {
       <Form>
         <FormGroup>
           <label htmlFor="itemName">{t("Item Name")}</label>
-          <FormInput id="itemName" placeholder="What are you selling" value={this.state.current_item.name} onChange={this.handleNameInput}/>
+          <FormInput id="itemName" placeholder={t("What are you selling")} value={this.state.current_item.name} onChange={this.handleNameInput}/>
         </FormGroup>
 
         <FormGroup>
           <label htmlFor="itemName">{t("Description")}</label>
-          <FormInput id="itemName" placeholder="Describe your item for sale" value={this.state.current_item.description} onChange={this.handleDescriptionInput}/>
+          <FormInput id="itemName" placeholder={t("Describe your item for sale")} value={this.state.current_item.description} onChange={this.handleDescriptionInput}/>
         </FormGroup>
 
         <Row form>

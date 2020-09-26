@@ -145,6 +145,7 @@ function processResult(result) {
 				name: `${r.user_metadata.first_name} ${r.user_metadata.last_name}`,
 				phoneNum: r.user_metadata.phone_number,
 				amountUsed: r.shopItem.amountUsed,
+				amountPurchased: r.shopItem.amountPurchased,
 				email: r.email,
 			});
 		} else {
@@ -158,6 +159,7 @@ function processResult(result) {
 						name: `${r.user_metadata.first_name} ${r.user_metadata.last_name}`,
 						phoneNum: r.user_metadata.phone_number,
 						amountUsed: r.shopItem.amountUsed,
+						amountPurchased: r.shopItem.amountPurchased,
 						email: r.email,
 					},
 				],
@@ -196,9 +198,12 @@ const getPurchasedItems = async (event, context, callback) => {
 			'ShopItems.name as itemName',
 			'ShopItems.description as itemDesc',
 			'ShopItems.itemId',
+			'OwnedItems.amount as amountPurchased',
 			'OwnedItems.amountUsed',
+			'OwnedItems.studentId',
 		)
 		.then((result) => {
+			console.log(result);
 			if (result.length === 0) {
 				return result;
 			}
@@ -217,6 +222,7 @@ const getPurchasedItems = async (event, context, callback) => {
 				include_fields: true,
 				q: queryString,
 			}).then(authResult => authResult.map((student) => {
+				console.log(student);
 				const studentWithItem = student;
 				studentWithItem.shopItem = result.find(element => element.studentId === student.user_id);
 

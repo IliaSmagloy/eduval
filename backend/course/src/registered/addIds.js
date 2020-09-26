@@ -48,6 +48,12 @@ const addCourseRegisteredById = async (event, context, callback) => {
 			// Disconnect
 			knexConnection.client.destroy();
 			// eslint-disable-next-line no-console
+			if (err.code === 'ER_DUP_ENTRY') {
+				return callback(null, {
+					statusCode: 200,
+					body: '',
+				});
+			}
 			console.log(`ERROR registering students: ${err}`);
 			return callback(createError.InternalServerError('Error registering students.'));
 		});

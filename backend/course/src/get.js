@@ -145,6 +145,7 @@ function processResult(result) {
 				name: `${r.user_metadata.first_name} ${r.user_metadata.last_name}`,
 				phoneNum: r.user_metadata.phone_number,
 				amountUsed: r.shopItem.amountUsed,
+				amountPurchased: r.shopItem.amountPurchased,
 				email: r.email,
 			});
 		} else {
@@ -158,6 +159,7 @@ function processResult(result) {
 						name: `${r.user_metadata.first_name} ${r.user_metadata.last_name}`,
 						phoneNum: r.user_metadata.phone_number,
 						amountUsed: r.shopItem.amountUsed,
+						amountPurchased: r.shopItem.amountPurchased,
 						email: r.email,
 					},
 				],
@@ -196,7 +198,9 @@ const getPurchasedItems = async (event, context, callback) => {
 			'ShopItems.name as itemName',
 			'ShopItems.description as itemDesc',
 			'ShopItems.itemId',
+			'OwnedItems.amount as amountPurchased',
 			'OwnedItems.amountUsed',
+			'OwnedItems.studentId',
 		)
 		.then((result) => {
 			if (result.length === 0) {

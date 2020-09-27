@@ -202,9 +202,10 @@ const getPurchasedItems = async (event, context, callback) => {
 			'OwnedItems.amountUsed',
 			'OwnedItems.studentId',
 		)
-		.then((result) => {
-			if (result.length === 0) {
-				return result;
+		.then((shopItems) => {
+			console.log(shopItems);
+			if (shopItems.length === 0) {
+				return shopItems;
 			}
 
 			let queryString = '';
@@ -220,12 +221,29 @@ const getPurchasedItems = async (event, context, callback) => {
 				fields: 'user_id,email,user_metadata',
 				include_fields: true,
 				q: queryString,
-			}).then(authResult => authResult.map((student) => {
+			}).then(students => {
+				const result = [];
+
+				shopItems.forEach(item => {
+					const student = students.find(student => student.user_id === item.studentId);
+					let studentWithItem = Object.assign({}, student);
+					studentWithItem.shopItem = item;
+					// studentWithItem.shopItem = item;
+					result.push(studentWithItem);
+				});
+
+				console.log(result);
+
+				return result;
+			});
+			/*.then(authResult => authResult.map((student) => {
+				console.log(student);
 				const studentWithItem = student;
 				studentWithItem.shopItem = result.find(element => element.studentId === student.user_id);
-
+				studentWithItem.shopItem = shopItems.find(element => element.studentId === student.user_id);
 				return studentWithItem;
 			}));
+			}));*/
 		})
 		.then((result) => {
 			knexConnection.client.destroy();

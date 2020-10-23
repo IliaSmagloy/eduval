@@ -303,8 +303,8 @@ class StudentMessageCard extends React.Component
     return(
       <Card className={classes.card}>
         <CardHeader
-        title={this.state.title}
-        subheader={this.state.subtitle}
+        title={this.props.title}
+        subheader={this.props.subtitle}
         classes={{
           title: classes.title,
         }}

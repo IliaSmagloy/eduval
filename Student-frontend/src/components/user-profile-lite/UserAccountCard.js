@@ -90,7 +90,7 @@ class UserAccountCard extends React.Component
       showNewPassword: false,
       showCurrPassword: false,
     }
-    this.setState({details:  this.props.details});
+    this.state = {details:  this.props.details};
 
     this.setUsername = this.setUsername.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -365,7 +365,7 @@ class UserAccountCard extends React.Component
           classes={{
             title: classes.title,
           }}
-          title={this.state.title}
+          title={this.props.title}
         />
         <CardContent>
           <form className={classes.container}

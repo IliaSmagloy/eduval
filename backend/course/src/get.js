@@ -153,6 +153,8 @@ function processResult(result) {
 				id: r.shopItem.itemId,
 				name: r.shopItem.itemName,
 				description: r.shopItem.itemDesc,
+				descriptionRu: r.shopItem.itemDescRu,
+				descriptionHe: r.shopItem.itemDescHe,
 				students: [
 					{
 						id: r.user_id,
@@ -197,6 +199,8 @@ const getPurchasedItems = async (event, context, callback) => {
 		.select(
 			'ShopItems.name as itemName',
 			'ShopItems.description as itemDesc',
+			'ShopItems.descriptionRu as itemDescRu',
+			'ShopItems.descriptionHe as itemDescHe',
 			'ShopItems.itemId',
 			'OwnedItems.amount as amountPurchased',
 			'OwnedItems.amountUsed',

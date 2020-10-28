@@ -72,6 +72,8 @@ class CourseStore extends React.Component {
           id: 1,
           name: "Test pass",
           description: "skip the test on Monday",
+          descriptionRu: "skip the test on Monday",
+          descriptionHe: "skip the test on Monday",
           cost: 100,
           amountAvailable: 5,
           sellByDate: "14-02-2019"
@@ -80,6 +82,8 @@ class CourseStore extends React.Component {
           id: 2,
           name: "Homework pass",
           description: "one time pass to not turn in homework",
+          descriptionRu: "one time pass to not turn in homework",
+          descriptionHe: "one time pass to not turn in homework",
           cost: 30,
           amountAvailable: 25,
           sellByDate: "11-02-2019"
@@ -88,6 +92,8 @@ class CourseStore extends React.Component {
           id: 3,
           name: "Late day",
           description: "one time pass to come in late",
+          descriptionRu: "one time pass to come in late",
+          descriptionHe: "one time pass to come in late",
           cost: 5,
           amountAvailable: 25,
           sellByDate: "11-02-2019"
@@ -96,6 +102,8 @@ class CourseStore extends React.Component {
           id: 4,
           name: "Notebook",
           description: "Notebooks cupons",
+          descriptionRu: "Notebooks cupons",
+          descriptionHe: "Notebooks cuponsy",
           cost: 15,
           amountAvailable: 40,
           sellByDate: "11-07-2019"
@@ -108,6 +116,8 @@ class CourseStore extends React.Component {
     this.closeItemModal = this.closeItemModal.bind(this);
     this.handleNameInput = this.handleNameInput.bind(this);
     this.handleDescriptionInput = this.handleDescriptionInput.bind(this);
+    this.handleDescriptionRuInput = this.handleDescriptionRuInput.bind(this);
+    this.handleDescriptionHeInput = this.handleDescriptionHeInput.bind(this);
     this.handlePriceInput = this.handlePriceInput.bind(this);
     this.handleAmountInput = this.handleAmountInput.bind(this);
     this.handleLastDateInput = this.handleLastDateInput.bind(this);
@@ -174,11 +184,33 @@ class CourseStore extends React.Component {
     this.setState({current_item: item})
   }
 
+  handleDescriptionRuInput(input){
+    this.setState({
+      error:"",
+      errorInModal:false,
+    });
+    let item = this.state.current_item;
+    item.descriptionRu = input.target.value;
+    this.setState({current_item: item})
+  }
+
+  handleDescriptionHeInput(input){
+    this.setState({
+      error:"",
+      errorInModal:false,
+    });
+    let item = this.state.current_item;
+    item.descriptionHe = input.target.value;
+    this.setState({current_item: item})
+  }
+
   showNewItemModal() {
     this.setState({modalIsOpen: true, titleModal: "AddNewItem", current_item: {
       id: -1,
       name: "",
       description: "",
+      descriptionRu: "",
+      descriptionHe: "",
       cost: 0,
       amountAvailable: 0,
       sellByDate: this.state.course.endDate
@@ -374,8 +406,18 @@ class CourseStore extends React.Component {
         </FormGroup>
 
         <FormGroup>
-          <label htmlFor="itemName">{t("Description")}</label>
+          <label htmlFor="itemName">Description</label>
           <FormInput id="itemName" placeholder={t("Describe your item for sale")} value={this.state.current_item.description} onChange={this.handleDescriptionInput}/>
+        </FormGroup>
+
+        <FormGroup>
+          <label htmlFor="itemName">Описание</label>
+          <FormInput id="itemName" placeholder={t("Describe your item for sale")} value={this.state.current_item.descriptionRu} onChange={this.handleDescriptionRuInput}/>
+        </FormGroup>
+
+        <FormGroup>
+          <label htmlFor="itemName">תיאור</label>
+          <FormInput id="itemName" placeholder={t("Describe your item for sale")} value={this.state.current_item.descriptionHe} onChange={this.handleDescriptionHeInput}/>
         </FormGroup>
 
         <Row form>

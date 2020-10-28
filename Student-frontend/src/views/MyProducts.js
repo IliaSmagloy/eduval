@@ -198,11 +198,9 @@ class MyProducts extends React.Component {
                 <h4 className="card-title" style={{ color:  this.stringToColour(product.name) }}>{product.name}</h4>
                 </Col>
                 </Row>
-
-
-
-
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Description")}: </b>{" "+ product.description}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Description: </b>{" "+ product.description}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>Описание: </b>{" "+ product.descriptionRu}</p>
+                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>תיאור: </b>{" "+ product.descriptionHe}</p>
                   <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Amount Left")}: </b>{" "+(product.amount - product.amountUsed)}</p>
                   <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Status")}: </b>{(product.isActive) ? "Active" : "Not Active"}</p>
 

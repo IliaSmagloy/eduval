@@ -11,6 +11,12 @@ exports.ShopItem = {
 		description: {
 			type: 'string',
 		},
+		descriptionRu: {
+			type: 'string',
+		},
+		descriptionHe: {
+			type: 'string',
+		},
 		cost: {
 			type: 'integer',
 		},

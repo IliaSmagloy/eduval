@@ -209,7 +209,7 @@ class Lesson extends React.Component {
     if(this.state.message_modal_open==true) {
         setTimeout(function(){
              this.setState({message_modal_open:false});
-        }.bind(this),10000);  // wait 5 seconds, then reset to false
+        }.bind(this),2000);  // wait 5 seconds, then reset to false
    }
   };
 

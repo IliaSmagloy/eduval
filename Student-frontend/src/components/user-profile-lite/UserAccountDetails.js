@@ -16,6 +16,7 @@ import server from "../../Server/Server"
 import TimeoutAlert from "../../components/common/TimeoutAlert"
 import UserAccountCard from "./UserAccountCard";
 import { withTranslation } from 'react-i18next';
+import history from '../../history';
 
 class UserAccountDetails extends React.Component {
 
@@ -80,7 +81,9 @@ class UserAccountDetails extends React.Component {
 
       self.setState({error: false, success: true, disabled: false});
       window.scrollTo(0, 0);
-      window.location.reload(true);
+      setTimeout(()=>{
+        history.push("/my-courses");
+      }, 3000);
     }, function(error){
       if(error.response)
       {

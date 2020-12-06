@@ -318,7 +318,7 @@ class CourseDetails extends React.Component {
                         {/* Description */}
                           <Col md="12" className="form-group">
                             <label htmlFor="feDescription">{t("Lesson Name")}</label>
-                            <FormTextarea id="feDescription" rows="3" value={this.state.course.description} onChange={this.updateDescription}/>
+                            <FormTextarea id="feDescription" rows="1" value={this.state.course.description} onChange={this.updateDescription}/>
                           </Col>
                         </Row>
                         <Button outline disabled={this.state.disabled} onClick={this.update} theme="accent">{t("Update Lesson")}</Button>

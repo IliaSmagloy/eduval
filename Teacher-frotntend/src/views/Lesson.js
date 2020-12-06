@@ -526,7 +526,6 @@ class Lesson extends React.Component {
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
           <Col xs="10" sm="10" md="10" lg="10">
- //           <PageTitle sm="4" title={this.state.course_name} subtitle={t("Lesson View")} className="text-sm-left" />
             <PageTitle sm="4" title={this.state.description} subtitle={this.state.course_name} className="text-sm-left" />
           </Col>
           <Col xs="2" sm="2" md="2" lg="2" style={{textAlign: "right" }}>

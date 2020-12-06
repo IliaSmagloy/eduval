@@ -94,17 +94,17 @@ class CourseSummary extends React.Component {
                         <Form>
                           <Row form>
                             {/* Course Name */}
-                            <p>{t("ClassName")} {this.state.course_name}</p>
+                            <p>{t("Course Name")}: {this.state.course_name}</p>
                           </Row>
 
                           <Row form>
                             {/* Lesson description */}
-                            <p>{t("LessonDescription")} {this.state.course_description}</p>
+                            <p>{t("Lesson Name")}: {this.state.course_description}</p>
                           </Row>
 
                           <Row form>
                             {/* Course Location */}
-                            <p>{t("Location")} {this.state.course_location}</p>
+                            <p>{t("Location")}: {this.state.course_location}</p>
                           </Row>
 
                           <Row form>

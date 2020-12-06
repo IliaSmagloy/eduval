@@ -24,7 +24,7 @@ const NewCourseForm = () => (
             </FormGroup>
 
             <FormGroup>
-              <label htmlFor="feInputAddress">Course Description</label>
+              <label htmlFor="feInputAddress">Lesson Name</label>
               <FormInput id="feInputAddress" placeholder="A short explanation of the course" />
             </FormGroup>
 

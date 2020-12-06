@@ -94,7 +94,7 @@ class NewCourseForm extends React.Component {
                 </FormGroup>
 
                 <FormGroup>
-                  <label htmlFor="feInputAddress">{t("Course Description")}</label>
+                  <label htmlFor="feInputAddress">{t("Lesson Name")}</label>
                   <FormInput id="feInputAddress" placeholder={t("A short explanation of the course")} value={this.state.description} onChange={this.updateDescription} />
                 </FormGroup>
 

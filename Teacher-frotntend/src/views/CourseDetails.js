@@ -317,11 +317,11 @@ class CourseDetails extends React.Component {
                         <Row form>
                         {/* Description */}
                           <Col md="12" className="form-group">
-                            <label htmlFor="feDescription">{t("Course Description")}</label>
+                            <label htmlFor="feDescription">{t("Lesson Name")}</label>
                             <FormTextarea id="feDescription" rows="3" value={this.state.course.description} onChange={this.updateDescription}/>
                           </Col>
                         </Row>
-                        <Button outline disabled={this.state.disabled} onClick={this.update} theme="accent">{t("Update Course")}</Button>
+                        <Button outline disabled={this.state.disabled} onClick={this.update} theme="accent">{t("Update Lesson")}</Button>
                         <Button theme="success" disabled={this.state.disabled || (this.state.activeLesson && this.state.activeLesson != this.props.match.params.id)} onClick={()=>{
                           this.setState({disabled: true});
                           if(this.state.activeLesson == this.props.match.params.id){

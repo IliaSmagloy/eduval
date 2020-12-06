@@ -189,7 +189,7 @@ class DemoLessonProperties extends React.Component {
               multiline
               rowsMax="4"
               id="standard-multiline-flexible"
-              label={t("Course Description (OPTIONAL)")}
+              label={t("Lesson Name (OPTIONAL)")}
               className={classes.textField}
               margin="normal"
               InputProps={{

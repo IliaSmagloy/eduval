@@ -277,7 +277,7 @@ class CourseCard extends React.Component
           />
           { this.state.description!=="" &&
             <CardContent>
-              <Typography paragraph>{t('Course Description')}: {this.state.description}</Typography>
+              <Typography paragraph>{t('Lesson Name')}: {this.state.description}</Typography>
             </CardContent>
           }
 

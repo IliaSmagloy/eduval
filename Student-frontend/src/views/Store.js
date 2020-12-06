@@ -212,8 +212,6 @@ class Store extends React.Component {
                 </Col>
                 </Row>
                   <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Description")}: </b>{" "+ post.description}</p>
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("DescriptionRu")}: </b>{" "+ post.descriptionRu}</p>
-                  <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("DescriptionHe")}: </b>{" "+ post.descriptionHe}</p>
                   <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Cost")}: </b>{" "+post.cost}</p>
                   <p className="card-text text-muted" style={{ color:  this.getRandomColor() }}><b>{t("Amount Left")}: </b>{" "+post.amountAvailable}</p>
 

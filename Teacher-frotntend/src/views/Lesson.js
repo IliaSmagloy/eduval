@@ -49,7 +49,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 
-import PageTitle from "../components/common/PageTitle";
+import LessonPageTitle from "../components/common/LessonPageTitle";
 import AttendStudentCard from "../components/lessonCards/AttendStudentCard";
 import RegisteredStudentsCard from "../components/lessonCards/RegisteredStudentsCard";
 import StudentMessageCard from "../components/lessonCards/StudentMessageCard";
@@ -526,7 +526,7 @@ class Lesson extends React.Component {
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
           <Col xs="10" sm="10" md="10" lg="10">
-            <PageTitle sm="4" title={this.state.description} subtitle={this.state.course_name} className="text-sm-left" />
+            <LessonPageTitle sm="4" title={this.state.description} subtitle={this.state.course_name} className="text-sm-left" />
           </Col>
           <Col xs="2" sm="2" md="2" lg="2" style={{textAlign: "right" }}>
             <LightTooltip title={t("ShowInviteLink")} placement="bottom-end" className={classes.tooltip}>

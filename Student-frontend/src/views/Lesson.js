@@ -39,7 +39,7 @@ import CustomFileUpload from "../components/components-overview/CustomFileUpload
 import DropdownInputGroups from "../components/components-overview/DropdownInputGroups";
 import CustomSelect from "../components/components-overview/CustomSelect";
 import CoinImage from "../images/midEcoin.png"
-import PageTitle from "../components/common/PageTitle";
+import LessonPageTitle from "../components/common/LessonPageTitle";
 
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -403,7 +403,7 @@ class Lesson extends React.Component {
 
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title={this.state.description} subtitle={this.state.name} className="text-sm-left" />
+          <LessonPageTitle sm="4" title={this.state.description} subtitle={this.state.name} className="text-sm-left" style={{fontSize:"40px" ,textAlign:"center"}}/>
         </Row>
         {/* First Row of Posts */}
         <Row>

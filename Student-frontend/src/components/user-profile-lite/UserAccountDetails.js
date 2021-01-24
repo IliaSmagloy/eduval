@@ -15,6 +15,7 @@ import {
 import server from "../../Server/Server"
 import TimeoutAlert from "../../components/common/TimeoutAlert"
 import UserAccountCard from "./UserAccountCard";
+import UserAccountCardSignUp from "./UserAccountCardSignUp";
 import { withTranslation } from 'react-i18next';
 import history from '../../history';
 
@@ -38,6 +39,8 @@ class UserAccountDetails extends React.Component {
       username_taken: false,
       email_taken: false,
       weak_password: false,
+      info_changed: false,
+      demo: false,
     };
 
 
@@ -48,6 +51,7 @@ class UserAccountDetails extends React.Component {
     let self = this;
     this.setState({disabled: true});
 
+    console.log("update teacher", teacher_details);
     var tmp_dets=teacher_details;
     delete tmp_dets.demoStudent;
     if(tmp_dets.newPassword=="")
@@ -69,6 +73,7 @@ class UserAccountDetails extends React.Component {
     //Theoretically we might want to check whether anything was changed at all?
     server.updateStudent(function(response)
     {
+      console.log("update student", teacher_details);
       var payload = JSON.parse(localStorage.getItem('payload'));
       payload["https://emon-teach.com/phone_number"]=tmp_dets.phoneNum;
       payload["https://emon-teach.com/first_name"]=tmp_dets.firstName;
@@ -85,6 +90,7 @@ class UserAccountDetails extends React.Component {
         history.push("/my-courses");
       }, 3000);
     }, function(error){
+      console.log("update error", teacher_details);
       if(error.response)
       {
         if(error.response.status==403){
@@ -114,6 +120,10 @@ class UserAccountDetails extends React.Component {
           self.setState({error: "An error has occurred", success: false, disabled: false});
           window.scrollTo(0, 0);
         }
+
+        console.log("update error", self.state);
+        console.log("update error", error.response);
+        console.log("update error", error.response.data.error);
       }
     }, tmp_dets);
   }
@@ -139,7 +149,7 @@ class UserAccountDetails extends React.Component {
         phoneNum: demo? "" : student_payload["https://emon-teach.com/phone_number"],
         demoStudent: student_payload["https://emon-teach.com/demo_student"]
     }
-      self.setState({details: new_dets});
+      self.setState({details: new_dets, demo: demo});
     }
     else
     {
@@ -151,30 +161,54 @@ class UserAccountDetails extends React.Component {
   render()
   {
     const { t } = this.props;
-  return(
-    <div>
-      {this.state.error &&
-      <TimeoutAlert className="mb-0" theme="danger" msg={this.state.error} time={10000}/>
-      }
-      {this.state.success &&
-      <TimeoutAlert className="mb-0" theme="success" msg={t("Success! Your profile has been updated!")} time={10000}/>
-      }
-      <UserAccountCard
-      title={t("Account Details")}
-      details={this.state.details}
-      updateTeacher={this.update}
-      wrongPassword={this.state.wrong_password}
-      changedOldPassword={()=>{this.setState({wrong_password:false})}}
-      tooMany={this.state.too_many_attempts}
-      usernameTaken={this.state.username_taken}
-      changedUsername={()=>{this.setState({username_taken:false})}}
-      emailTaken={this.state.email_taken}
-      changedEmail={()=>{this.setState({email_taken:false})}}
-      weakPassword={this.state.weak_password}
-      changedWeakPassword={()=>{this.setState({weak_password:false})}}
-      />
-    </div>
-    );
+
+    var student_payload = server.getStudentProfile( function(error){
+      console.log("Error in getting Student Profile for Nav Bar");
+      console.log(error);
+    });
+    var demo = student_payload["https://emon-teach.com/demo_student"];
+    return(
+      <div>
+        {this.state.error &&
+        <TimeoutAlert className="mb-0" theme="danger" msg={this.state.error} time={10000}/>
+        }
+        {this.state.success &&
+        <TimeoutAlert className="mb-0" theme="success" msg={t("Success! Your profile has been updated!")} time={10000}/>
+        }
+        {demo &&
+          <UserAccountCardSignUp
+          title={t("Account Details")}
+          details={this.state.details}
+          updateTeacher={this.update}
+          tooMany={this.state.too_many_attempts}
+          usernameTaken={this.state.username_taken}
+          changedUsername={()=>{this.setState({username_taken:false, info_changed: true})}}
+          emailTaken={this.state.email_taken}
+          changedEmail={()=>{this.setState({email_taken:false, info_changed: true})}}
+          weakPassword={this.state.weak_password}
+          changedWeakPassword={()=>{this.setState({weak_password:false, info_changed: true})}}
+          info_changed={this.state.info_changed}
+          />
+        }
+        {!demo &&
+          <UserAccountCard
+          title={t("Account Details")}
+          details={this.state.details}
+          updateTeacher={this.update}
+          wrongPassword={this.state.wrong_password}
+          changedOldPassword={()=>{this.setState({wrong_password:false, info_changed: true})}}
+          tooMany={this.state.too_many_attempts}
+          usernameTaken={this.state.username_taken}
+          changedUsername={()=>{this.setState({username_taken:false, info_changed: true})}}
+          emailTaken={this.state.email_taken}
+          changedEmail={()=>{this.setState({email_taken:false, info_changed: true})}}
+          weakPassword={this.state.weak_password}
+          changedWeakPassword={()=>{this.setState({weak_password:false, info_changed: true})}}
+          info_changed={this.state.info_changed}
+          />
+        }
+      </div>
+      );
   }
 }
 

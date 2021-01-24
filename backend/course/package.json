@@ -13,19 +13,19 @@
     },
     "author": "",
     "dependencies": {
-        "auth0": "^2.20.0",
-        "http-errors": "^1.7.2",
+        "auth0": "^2.31.1",
+        "http-errors": "^1.8.0",
         "knex": "^0.16.5",
-        "middy": "^0.27.0",
-        "mysql": "^2.16.0"
+        "middy": "^0.27.1",
+        "mysql": "^2.18.1"
     },
     "devDependencies": {
         "eslint": "^5.16.0",
-        "eslint-config-airbnb": "^17.1.0",
-        "eslint-plugin-import": "^2.14.0",
-        "eslint-plugin-jsx-a11y": "^6.1.1",
-        "eslint-plugin-node": "^9.0.1",
-        "eslint-plugin-react": "^7.11.0",
-        "serverless-domain-manager": "^3.2.2"
+        "eslint-config-airbnb": "^17.1.1",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-node": "^9.2.0",
+        "eslint-plugin-react": "^7.22.0",
+        "serverless-domain-manager": "^3.3.2"
     }
 }

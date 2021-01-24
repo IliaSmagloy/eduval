@@ -10,10 +10,15 @@ const corsConfig = require('../../cors');
 
 function dbRowToProperObject(obj) {
 	const retObj = {};
+	if (!obj.user_metadata) {
+		console.log(`The student with id ${obj.user_id} doesn't have metadata in Auth0`);
+	}
 	retObj.id = obj.user_id;
-	retObj.name = `${obj.user_metadata.first_name} ${obj.user_metadata.last_name}`;
+	retObj.name = obj.user_metadata ? `${obj.user_metadata.first_name} ${obj.user_metadata.last_name}` : '';
+	// retObj.name = `${obj.user_metadata.first_name} ${obj.user_metadata.last_name}`;
 	retObj.email = obj.email;
-	retObj.phoneNum = obj.user_metadata.phone_number;
+	retObj.phoneNum = obj.user_metadata ? obj.user_metadata.phone_number : '0999999999';
+	// retObj.phoneNum = obj.user_metadata.phone_number;
 	retObj.emons = obj.emons;
 	return retObj;
 }
@@ -54,8 +59,8 @@ const getRegisteredWithEmons = async (event, context, callback) => {
 			.andWhere('courseId', event.pathParameters.courseId)
 			.groupBy('studentId')
 			.as('Table1'),
-		'Registered.studentId',
-		'Table1.studentLogId')
+			'Registered.studentId',
+			'Table1.studentLogId')
 		.then((result) => {
 			// if no registered students
 			if (result.length === 0) {
